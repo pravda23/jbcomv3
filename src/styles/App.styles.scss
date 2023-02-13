@@ -1,58 +1,72 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
+:root {
+  --white: #cecece;
+  --color-light: #008eec;
+  --color-dark: #0063a4;
+  --black: #272727;
+}
+
 * {
   box-sizing: border-box;
 }
 
 .overlay {
   min-height: 100vh;
-  background-color: hsla(220, 13%, 18%, 0.6);
+  background-color: hsla(220, 13%, 18%, 0.8);
   z-index: 10;
 }
 
 .app-container {
   text-align: left;
-  min-height: 70vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  // align-items: top;
-  // background-color: black;
   justify-content: flex-start;
   font-family: "Oswald", "Helvetica Neue", Helvetica, Arial;
   font-size: calc(15px + 2vmin);
-  color: white;
+  color: var(--white);
   padding: 1rem;
+  overflow: hidden;
 }
 
-.footer {
+.hero-title > h1 {
+  min-height: 80vh;
   display: flex;
-  flex-direction: column;
-  // min-height: 40vh;
-  text-align: right;
-  padding: 1rem;
-  color: white;
-  font-size: calc(10px + 2vmin);
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
 }
 
 a {
-  color: #ffd21d;
+  color: var(--color-dark);
   text-decoration: none;
 }
 
+a:hover {
+  color: var(--color-light);
+}
+
 .header-container {
-  background-image: url("https://johnbartmann.com/getjohnnyjazz/resources/header-mobile.png");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: contain;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  min-height: 15vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  min-height: 10vh;
   width: "100%";
-  // height: 30vh;
-  // padding: 0.5em;
-  border-bottom: 2px solid #ffd21d;
-  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--white);
+  margin-bottom: 0.7rem;
+}
+
+.content-container {
+  background-image: url("https://johnbartmann.com/gatsby-site/images/headshot.jpg");
+  object-fit: cover;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .navbar {
@@ -63,57 +77,50 @@ a {
   margin-bottom: 2rem;
 }
 
-.header-title {
-  padding-right: 0.5rem;
+.btn-nav {
+  font-size: 1.5rem;
+  border: 1px solid var(--color-dark);
+  color: var(--color-dark);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
-.title-icon {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.btn-nav:hover {
+  background-color: var(--white);
+  color: var(--color-dark);
 }
 
 .player-icon {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  color: #ffd21d;
+  color: var(--color-light);
 }
 
-.insta-container {
-  height: 100vh;
-  border: 1px solid #ffd21d;
-  border-radius: 5px;
-  background-color: hsla(220, 220, 220, 0.5);
-}
-
-.insta-container::-webkit-scrollbar {
-  display: none;
-}
-
-.video {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 1);
+.footer {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   text-align: center;
-  color: #fff;
-  z-index: -1;
+  padding: 1rem;
+  color: var(--white);
+  font-size: calc(10px + 2vmin);
+}
+
+.footer-title > h1 {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
 }
 
 .footer-container {
+  // min-height: 80vh;
   display: flex;
-  justify-content: flex-end;
-  text-align: right;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .cta-btn {
   display: flex;
@@ -121,41 +128,14 @@ a {
   align-items: center;
   font-family: "Oswald", "Helvetica Neue", Helvetica, Arial;
   border-radius: 0.5rem;
-  background-color: #00a8c5;
   padding: 1.5rem;
-  color: #ffd21d;
-  border: 1px solid #ffd21d;
+  border: 1px solid var(--white);
 }
 
-.bouncer {
-  display: flex;
-  align-items: center;
-  animation-duration: 1200ms;
-  animation-name: bouncer;
-  animation-iteration-count: infinite;
+.cta-btn > a {
+  color: var(--white);
 }
 
-@keyframes bouncer {
-  0% {
-    transform: translateX(0%);
-  }
-  50% {
-    transform: translateX(-50%);
-  }
-}
-
-// media queries
-
-@media (min-width: 802px) {
-  .insta-container {
-    height: 70vh;
-  }
-
-  .video {
-    object-fit: contain;
-    background-repeat: none;
-    background-image: url("https://getjohnnyjazz.com/resources/jj-hero.jpg");
-    background-size: cover;
-    // background-position: 30vw;
-  }
+.cta-btn > a:hover {
+  color: var(--color-dark);
 }
