@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div>
       <div className="footer-container">
-        <div className="footer-title">
+        <div className="hero-title">
           <h1>Motivated to deliver.</h1>
 
           <p className="cta-btn">

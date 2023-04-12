@@ -5,37 +5,20 @@ import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import Home from "./Home.component";
 import Footer from "./Footer.component";
 import Audio from "./Audio.component";
-import Writing from "./Writing.component";
 import Music from "./Music.component";
+import Writing from "./Writing.component";
 import Contact from "./Contact.component";
 
 function App() {
-  // const [volumeIcon, setVolumeIcon] = useState(false);
-  // const [videoMuted, setVideoMuted] = useState("muted");
-
-  // const vidUrl = "https://getjohnnyjazz.com/resources/jjvid.mp4";
-  // const setVolumeOnClick = () => {
-  //   setVolumeIcon(!volumeIcon);
-  //   setVideoMuted(videoMuted == "muted" ? "" : "muted");
-  // };
-
   return (
     <div className="content-container">
       <div class="overlay">
         <div className="app-container">
-          {/* <video
-          className="video"
-          src={vidUrl}
-          autoPlay
-          loop
-          muted={videoMuted}
-        /> */}
           <div className="header-container">
             <h1>JOHN BARTMANN</h1>
-            <h3>CONTENT CREATIVE</h3>
+            <h2>CONTENT // CREATIVE</h2>
           </div>
           <BrowserRouter>
-            {/* <Navbar /> */}
             <div className="navbar">
               <Link to="/">
                 <h1 className="btn-nav">HOME</h1>
@@ -55,13 +38,6 @@ function App() {
                 {" "}
                 <h1 className="btn-nav">CONTACT</h1>
               </Link>
-              {/* <div onClick={setVolumeOnClick} className="player-icon">
-              {volumeIcon ? (
-                <FaVolumeUp size="2rem" />
-              ) : (
-                <FaVolumeMute size="2rem" />
-              )}
-            </div> */}
             </div>
             <Routes>
               <Route index element={<Home />} />
