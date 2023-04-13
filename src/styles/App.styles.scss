@@ -4,7 +4,7 @@
   --white: #e6e6e6;
   --color-light: #90d3ff;
   --color-dark: #3d98d4;
-  --color-highlight: #cc00b1;
+  --color-highlight: #943444;
   --black: #272727;
 }
 
@@ -46,6 +46,7 @@ h4 {
   border-left: 0.5rem solid var(--color-highlight);
   padding-left: 1rem;
   margin: 0px;
+  padding-top: 0.5rem;
 }
 
 .hero-title > h1 {
@@ -104,8 +105,12 @@ a:hover {
 }
 
 .btn-nav:hover {
-  background-color: var(--color-highlight);
-  color: var(--white);
+  // background-color: var(--color-highlight);
+  border-radius: 0.5rem 0.5rem 0 0;
+  animation-name: nav;
+  animation-duration: 250ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .player-icon {
@@ -113,6 +118,24 @@ a:hover {
   justify-content: flex-end;
   align-items: center;
   color: var(--color-light);
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  justify-items: center;
+  // flex-direction: row;
+  // justify-content: space-around;
+  // border: 1px solid red;
+}
+
+.gallery-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  // border: 1px solid blue;
 }
 
 .footer {
@@ -163,4 +186,24 @@ audio {
   // width: 200px;
   // height: 25px;
   padding-top: 1rem;
+}
+
+// animations
+
+/* The animation code */
+@keyframes nav {
+  0% {
+    background-color: none;
+    color: none;
+  }
+  100% {
+    background-color: var(--color-highlight);
+    color: var(--white);
+  }
+}
+
+@media (min-width: 600px) {
+  .gallery-item-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

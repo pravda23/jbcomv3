@@ -41,7 +41,7 @@ const Audio = () => {
       <h4>
         <audio
           controls
-          src="http://www.podtrac.com/pts/redirect.mp3/feeds.soundcloud.com/stream/1122128083-soundafrica-think-african-episode-10.mp3"
+          src="https://johnbartmann.com/site-audio-smp/think-african-10.mp3"
         ></audio>
       </h4>
       <h4>
