@@ -1,4 +1,4 @@
-import { FaEnvelope, FaArrowRight } from "react-icons/fa";
+import { FaEnvelope, FaArrowRight, FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   return (
@@ -10,10 +10,11 @@ const Contact = () => {
           <p className="cta-btn">
             <a href="mailto:music@johnbartmann.com" target="_blank">
               <FaEnvelope className="m-1" fontSize="2rem" />
-            </a>
-            <br />
-            <a href="mailto:music@johnbartmann.com" target="_blank">
               music@johnbartmann.com
+            </a>
+            <a href="https://wa.link/h4thrk" target="_blank">
+              <FaWhatsapp className="m-0" fontSize="2rem" />
+              +2782 217 9116
             </a>
           </p>
         </div>

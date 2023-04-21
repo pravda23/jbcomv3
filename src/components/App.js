@@ -1,7 +1,8 @@
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import "../styles/App.styles.scss";
-import { useState } from "react";
+
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { FaEnvelope, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 import Home from "./Home.component";
 import Footer from "./Footer.component";
 import Audio from "./Audio.component";
@@ -12,17 +13,32 @@ import Contact from "./Contact.component";
 function App() {
   return (
     <div className="content-container">
-      <div class="overlay">
+      <div className="overlay">
         <div className="app-container">
           <div className="header-container">
-            <h1>JOHN BARTMANN</h1>
-            <h2>CONTENT // CREATIVE</h2>
+            <div className="header-title-container">
+              <h1>
+                <a href="/">JOHN BARTMANN</a>
+              </h1>
+              <h2>CONTENT // CREATIVE</h2>
+            </div>
+            <div className="header-contact-container">
+              <a href="mailto:music@johnbartmann.com" target="_blank">
+                <FaEnvelope className="m-1" fontSize="1rem" />
+              </a>
+              <a href="https://wa.link/h4thrk" target="_blank">
+                <FaWhatsapp className="m-1" fontSize="1rem" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/johnbartmann/"
+                target="_blank"
+              >
+                <FaLinkedin className="m-1" fontSize="1rem" />
+              </a>
+            </div>
           </div>
           <BrowserRouter>
             <div className="navbar">
-              <Link to="/">
-                <h1 className="btn-nav">HOME</h1>
-              </Link>
               <Link to="/writing">
                 <h1 className="btn-nav">WRITING</h1>
               </Link>

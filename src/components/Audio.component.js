@@ -1,7 +1,53 @@
+import { useState } from "react";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/src/styles.scss";
+import {
+  BsFillPlayCircleFill,
+  BsFillPauseCircleFill,
+  BsVolumeDown,
+  BsVolumeMute,
+} from "react-icons/bs";
+
 const Audio = () => {
+  const [currentTrack, setCurrentTrack] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const trackUrl = {
+    theatreland:
+      "https://media.voicemap.me/public/sound_bites/clips/000/010/534/original/01_START_TKTS_Ticket_Booth.mp3",
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    togglePlay();
+    setCurrentTrack(trackUrl.theatreland);
+
+    // setCurrentTrack(currentTrack);
+  };
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div>
-      <h1>Podcast production, audio editing mixing & mastering.</h1>
+      <AudioPlayer
+        autoPlay={false}
+        src={currentTrack}
+        // onPlay={(e) => {}}
+        // other props here
+      />
+      <br />
+      <br />
+      <br />
+      <h1>Podcast production, audio editing, mixing & mastering.</h1>
+      <h4>
+        <BsFillPlayCircleFill id="1" onClick={(e) => handleClick(e)} />
+        Listen to a clip from{" "}
+        <a href="https://voicemap.me/theatreland" target="_blank">
+          'Theatreland' (narrated by Ian McKellen)
+        </a>
+      </h4>
       <h3>
         GPS audio tour editing for{" "}
         <a href="https://voicemap.me" target="_blank" rel="noopener">
@@ -64,7 +110,7 @@ const Audio = () => {
       <h4>
         <audio
           controls
-          src="https://stitcher.simplecastaudio.com/abcdcb26-d88d-43f0-b168-b3ff84235a14/episodes/3ef7bba2-44af-4f20-b796-d6e991e418a6/audio/128/default.mp3"
+          src="https://johnbartmann.com/site-audio-smp/alibi-s01e01.mp3"
         ></audio>
       </h4>
       <h3>Entertainment podcast production </h3>
