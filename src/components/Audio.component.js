@@ -19,6 +19,7 @@ const Audio = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    console.log(e);
     togglePlay();
     setCurrentTrack(trackUrl.theatreland);
 
@@ -31,23 +32,25 @@ const Audio = () => {
 
   return (
     <div>
-      <AudioPlayer
-        autoPlay={false}
-        src={currentTrack}
-        // onPlay={(e) => {}}
-        // other props here
-      />
-      <br />
-      <br />
-      <br />
       <h1>Podcast production, audio editing, mixing & mastering.</h1>
-      <h4>
-        <BsFillPlayCircleFill id="1" onClick={(e) => handleClick(e)} />
-        Listen to a clip from{" "}
-        <a href="https://voicemap.me/theatreland" target="_blank">
-          'Theatreland' (narrated by Ian McKellen)
-        </a>
-      </h4>
+      {/* <h4>
+        <AudioPlayer
+          autoPlay={false}
+          src={currentTrack}
+          volume={0.1}
+          showSkipControls={false}
+          showJumpControls={false}
+          customAdditionalControls={[]}
+          layout="horizontal-reverse"
+          // onPlay={(e) => {}}
+          // other props here
+        />
+        <BsFillPlayCircleFill
+          font-size={"2rem"}
+          id="theatreland"
+          onClick={(e) => handleClick(e)}
+        />
+      </h4> */}
       <h3>
         GPS audio tour editing for{" "}
         <a href="https://voicemap.me" target="_blank" rel="noopener">
