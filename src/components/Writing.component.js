@@ -5,7 +5,7 @@ const Writing = () => {
   const jobs = [
     {
       title: "Kaspersky/LogrusIT",
-      description: "Cybersecurity marketing copy for 2022 Incident Report",
+      description: "Cybersecurity marketing copy",
       link: "https://docs.google.com/document/d/114UaQVx4eTB-OsWYptu28hATnOZw6HG8U_0lGQeIq5M/edit?usp=sharing",
     },
     {
@@ -28,25 +28,26 @@ const Writing = () => {
       description: "Educational podcasting guidebook",
       link: "https://gum.co/HIKdu",
     },
+
     {
-      title: "Saw and Sine",
-      description: "Podcasting blog writing",
-      link: "https://sawandsine.co.uk/blog",
-    },
-    {
-      title: "Think, African podcast",
-      description: "Script editing",
+      title: "Think, African",
+      description: "Podcast script editing",
       link: "https://za.boell.org/en/2021/05/25/think-african",
     },
     {
-      title: "One Night In Snake Park podcast",
-      description: "Script editing",
+      title: "One Night In Snake Park",
+      description: "Podcast script editing",
       link: "https://onenightinsnakepark.com",
     },
     {
-      title: "Alibi podcast",
-      description: "Script editing",
+      title: "Alibi",
+      description: "Podcast script editing",
       link: "https://www.volume.africa/alibi",
+    },
+    {
+      title: "Saw and Sine",
+      description: "Blog contentwriting",
+      link: "https://sawandsine.co.uk/blog",
     },
     {
       title: "DJ Courses Online",
@@ -55,12 +56,12 @@ const Writing = () => {
     },
     {
       title: "Music Industry Online",
-      description: "Blog writing",
+      description: "Blog content writing",
       link: "https://www.pegheadnation.com/learning-lab/advice/keep-going/",
     },
     {
       title: "Peghead Nation",
-      description: "Public domain literature adaptation",
+      description: "Blog content writing",
       link: "https://www.pegheadnation.com/learning-lab/advice/keep-going/",
     },
   ];
