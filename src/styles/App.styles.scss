@@ -2,9 +2,10 @@
 
 :root {
   --white: #e6e6e6;
-  --color-light: #dd7017;
-  --color-dark: #3d98d4;
-  --color-highlight: #dd7017;
+  --color-light: hsl(27, 81%, 48%);
+  --color-light-trans: hsla(0, 0%, 88%, 0.1);
+  --color-dark: hsl(204, 64%, 54%);
+  --color-highlight: hsl(27, 81%, 48%);
   --black: #272727;
 }
 
@@ -33,7 +34,7 @@
 
 h3 {
   font-size: 1.6rem;
-  margin-top: 2rem;
+  // margin-top: 2rem;
 }
 
 h3 > a {
@@ -43,10 +44,10 @@ h3 > a {
 
 h4 {
   font-size: 1.2rem;
-  border-left: 0.5rem solid var(--color-highlight);
+
   padding-left: 1rem;
   margin: 0px;
-  padding-top: 0.5rem;
+  // padding-top: 0.5rem;
 }
 
 .hero-title > h1 {
@@ -136,6 +137,11 @@ a:hover {
   // animation-fill-mode: forwards;
 }
 
+.single-page-container {
+  animation-name: fadeIn;
+  animation-duration: 300ms;
+}
+
 .player-icon {
   display: flex;
   justify-content: flex-end;
@@ -159,6 +165,14 @@ a:hover {
   align-items: center;
   padding: 1rem;
   // border: 1px solid blue;
+}
+
+.card-container {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-light-trans);
+  margin-top: 0.5rem;
+  border-left: 0.5rem solid var(--color-highlight);
 }
 
 .footer {
@@ -219,5 +233,14 @@ audio {
 @media (min-width: 600px) {
   .gallery-item-container {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

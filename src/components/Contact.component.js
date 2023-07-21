@@ -7,7 +7,7 @@ import {
 
 const Contact = () => {
   return (
-    <div>
+    <div className="single-page-container">
       <div className="hero-title">
         <h1>Motivated to deliver.</h1>
 

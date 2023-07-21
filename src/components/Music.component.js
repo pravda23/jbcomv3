@@ -17,7 +17,7 @@ const Music = () => {
   ];
 
   return (
-    <div>
+    <div className="single-page-container">
       <h1>Music assets for brands, storytellers and social media.</h1>
 
       <h3>

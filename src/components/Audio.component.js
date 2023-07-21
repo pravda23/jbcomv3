@@ -31,7 +31,7 @@ const Audio = () => {
   };
 
   return (
-    <div>
+    <div className="single-page-container">
       <h1>Podcast production, audio editing, mixing & mastering.</h1>
       {/* <h4>
         <AudioPlayer
