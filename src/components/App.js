@@ -4,6 +4,7 @@ import "../styles/App.styles.scss";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { FaEnvelope, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 import Home from "./Home.component";
+import Navbar from "./Navbar.component";
 import Footer from "./Footer.component";
 import Audio from "./Audio.component";
 import Music from "./Music.component";
@@ -38,23 +39,7 @@ function App() {
             </div>
           </div>
           <BrowserRouter>
-            <div className="navbar">
-              <Link to="/writing">
-                <h1 className="btn-nav">WRITING</h1>
-              </Link>
-              <Link to="/audio">
-                {" "}
-                <h1 className="btn-nav">AUDIO</h1>
-              </Link>
-              <Link to="/music">
-                {" "}
-                <h1 className="btn-nav">MUSIC</h1>
-              </Link>
-              <Link to="/contact">
-                {" "}
-                <h1 className="btn-nav">CONTACT</h1>
-              </Link>
-            </div>
+            <Navbar />
             <Routes>
               <Route index element={<Home />} />
               <Route path="/writing" element={<Writing />} />
