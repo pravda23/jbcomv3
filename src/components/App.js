@@ -24,7 +24,7 @@ function App() {
               <h2>CONTENT // CREATIVE</h2>
             </div>
             <div className="header-contact-container">
-              <a href="mailto:music@johnbartmann.com" target="_blank">
+              <a href="mailto:hi@johnbartmann.com" target="_blank">
                 <FaEnvelope className="m-1" fontSize="1rem" />
               </a>
               <a href="https://wa.link/h4thrk" target="_blank">
