@@ -116,21 +116,21 @@ a:hover {
 
 .navbar-container {
   display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .navbar {
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: row;
   justify-content: flex-start;
-  padding-right: 0.5rem;
   margin-bottom: 2rem;
   overflow-y: auto;
-  border-radius: 0.2rem;
   color: white;
   background-color: var(--color-light-trans);
-  border: 1px solid gray;
-  width: 90%;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  padding: 0rem;
   // scrollbar: none;
 }
 
@@ -138,10 +138,47 @@ a:hover {
   display: none;
 }
 
+.navbar-links-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.navbar-scroll-anchor-left {
+  position: sticky;
+  left: 0;
+  font-size: 3rem;
+}
+.navbar-scroll-anchor-right {
+  position: sticky;
+  right: 0;
+  font-size: 3rem;
+  // background: linear-gradient(90deg, transparent, var(--color-light-trans));
+}
+
 .navbar-chevron-left,
 .navbar-chevron-right {
-  width: 5%;
-  padding: 0.2rem 0.5rem 0.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.2rem 0 0.2rem;
+}
+
+.navbar-chevron-left {
+  background-color: var(--color-light-trans);
+  border-bottom: 1px solid gray;
+  margin-bottom: 2rem;
+}
+
+.navbar-chevron-left:hover,
+.navbar-chevron-right:hover {
+  color: var(--color-dark);
+}
+
+.navbar-chevron-right {
+  background-color: var(--color-light-trans);
+  border-bottom: 1px solid gray;
+  margin-bottom: 2rem;
 }
 
 .btn-nav {
