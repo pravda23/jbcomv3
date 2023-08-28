@@ -1,54 +1,71 @@
+import React from "react";
 import ReactPlayer from "react-player";
+import "react-h5-audio-player/src/styles.scss";
+import Card from "./Card.component";
 
 const Music = () => {
-  const trackArr = [
+  const musicJobs = [
     {
-      title: "1",
-      trackUrl: "1",
+      title: "Film & TV music",
+      description: "Contributing composer: Leon Schuster 'Frank and Fearless",
+      link: "https://youtu.be/_8slPqV-16w",
+      ytUrl:
+        "https://www.youtube.com/watch?v=pkmWkcH_7Qc&list=PLuqUikzY1o5XWKR-oattHw_Atq9FLOhm1",
     },
     {
-      title: "2",
-      trackUrl: "2",
+      title: "Jingle & theme music",
+      description: "Composer: Mēmotiv",
+      link: "https://www.linkedin.com/company/memotiv/",
+      audioUrl: "https://johnbartmann.com/site-audio-smp/spdwrk-jingle-02.wav",
     },
     {
-      title: "3",
-      trackUrl: "3",
+      title: "Commercial electro-jazz",
+      description: "Composition/production: 'Night And Day' by Pravda",
+      link: "http://pravdaofficial.com/music/",
+      ytUrl: "https://www.youtube.com/watch?v=lOygAQEQ5To",
+    },
+    // {
+    //   title: "Commercial electro-jazz",
+    //   description: "Composition/production: 'Wooden Wendy' by Pravda",
+    //   link: "http://pravdaofficial.com/music/",
+    //   ytUrl: "https://www.youtube.com/watch?v=mX1SgwsDNS8",
+    // },
+    {
+      title: "Creative Commons music",
+      description: "Royalty-free music for YouTube and games",
+      link: "http://youtube.com/johnbartmannmusic/",
+      ytUrl:
+        "https://www.youtube.com/watch?v=pkmWkcH_7Qc&list=PLuqUikzY1o5XWKR-oattHw_Atq9FLOhm1",
+    },
+    {
+      title: "90s sitcom parody music",
+      description: "Custom retro music for brands and channels",
+      link: "https://youtu.be/1DAoz6e3JG8",
+      ytUrl: "https://youtu.be/1DAoz6e3JG8",
+    },
+    {
+      title: "Themed library music",
+      description: "Composition/production: DNA Muzik / Minds and Music",
+      link: "https://dnamusik.sourceaudio.com/album/3646849",
+      audioUrl:
+        "https://johnbartmann.com/site-audio-smp/just-trolling-along.mp3",
     },
   ];
 
   return (
     <div className="single-page-container">
-      <h1>Music assets for brands, storytellers and social media.</h1>
+      <h1>MUSIC</h1>
+      {musicJobs.map((job) => {
+        return Card(
+          job.title,
+          job.description,
+          job.link,
+          job.audioUrl,
+          job.ytUrl
+        );
+      })}
 
-      <h3>
-        Commercial music production (
-        <a href="http://pravdaofficial.com/music/" target="_blank">
-          view all
-        </a>
-        )
-      </h3>
-      <h4>
-        <div className="gallery-container">
-          <div className="gallery-item-container">
-            <ReactPlayer
-              url="https://www.youtube.com/watch?v=lOygAQEQ5To"
-              width="18rem"
-              height="auto"
-            />
-            Pravda - Night & Day ( Wagram Music )
-          </div>
-          <div className="gallery-item-container">
-            <ReactPlayer
-              url="https://www.youtube.com/watch?v=mX1SgwsDNS8"
-              width="18rem"
-              height="auto"
-            />
-            Pravda - Wooden Wendy
-          </div>
-        </div>
-      </h4>
-
-      <h3>
+      {/*     <h3>
         Royalty-free music theme pack production (
         <a
           href="https://www.youtube.com/watch?v=pkmWkcH_7Qc&list=PLuqUikzY1o5XWKR-oattHw_Atq9FLOhm1"
@@ -94,7 +111,7 @@ const Music = () => {
         </div>
       </h4>
 
-      <h3>Narrative scoring & film/TV soundtrack music production</h3>
+ <h3>Narrative scoring & film/TV soundtrack music production</h3>
       <h4>
         Film music (contributing) composition (Leon Schuster 'Frank & Fearless'){" "}
       </h4>
@@ -167,7 +184,7 @@ const Music = () => {
         <a href="https://dukesofnote.com/" target="_blank">
           The Dukes of Note - carnival rock
         </a>
-      </h4>
+      </h4> */}
 
       <h3>Music profiles</h3>
       <h4>

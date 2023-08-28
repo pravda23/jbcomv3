@@ -2,7 +2,7 @@ import Card from "./Card.component";
 import { useState } from "react";
 
 const Writing = () => {
-  const jobs = [
+  const writingJobs = [
     {
       title: "Kaspersky/LogrusIT",
       description: "Cybersecurity marketing copy",
@@ -46,7 +46,7 @@ const Writing = () => {
     },
     {
       title: "Saw and Sine",
-      description: "Blog contentwriting",
+      description: "Blog content writing",
       link: "https://sawandsine.co.uk/blog",
     },
     {
@@ -69,7 +69,7 @@ const Writing = () => {
   return (
     <div className="single-page-container">
       <h1>WRITING</h1>
-      {jobs.map((job) => {
+      {writingJobs.map((job) => {
         return Card(job.title, job.description, job.link);
       })}
 

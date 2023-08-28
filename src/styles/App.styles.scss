@@ -239,6 +239,10 @@ a:hover {
   width: 80%;
 }
 
+.card-title > h3 {
+  justify-content: flex-start;
+}
+
 .card-button {
   width: 20%;
 }

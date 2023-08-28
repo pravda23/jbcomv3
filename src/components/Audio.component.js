@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Card from "./Card.component";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
 import {
@@ -7,10 +8,54 @@ import {
   BsVolumeDown,
   BsVolumeMute,
 } from "react-icons/bs";
+import WaveSurfer from "wavesurfer.js";
 
 const Audio = () => {
   const [currentTrack, setCurrentTrack] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
+
+  const audioJobs = [
+    {
+      title: "VoiceMap",
+      description: "GPS audio tour editing",
+      link: "https://voicemap.me/theatreland",
+      audioUrl:
+        "https://media.voicemap.me/public/sound_bites/clips/000/010/534/original/01_START_TKTS_Ticket_Booth.mp3",
+    },
+    {
+      title: "Sound Africa",
+      description:
+        "'Think African' podcast production and development (supported by The Heinrich Boell Foundation)",
+      link: "https://open.spotify.com/show/2HQNkLsuI9CoEnvPTZ2GIo",
+      audioUrl: "https://johnbartmann.com/site-audio-smp/think-african-10.mp3",
+    },
+    {
+      title: "Develop Audio",
+      description: "'Alibi' podcast production",
+      link: "https://developaudio.org/anthony",
+      audioUrl: "https://johnbartmann.com/site-audio-smp/alibi-s01e01.mp3",
+    },
+    {
+      title: "Telltale Media",
+      description: "'Your Mom With Schalk' podcast mixing",
+      link: "https://telltale.media/our-shows/schalk/",
+      audioUrl: "https://media.transistor.fm/572b5785/7cbce5b6.mp3",
+    },
+    {
+      title: "Center Stage Collective",
+      description: "'The LaFresian Chronicles' podcast production & score",
+      link: "https://pod.link/Lafresiaaudio",
+      audioUrl:
+        "https://pinecast.com/listen/4aafbddf-ba68-4d83-8b6f-34e48014a553.mp3",
+    },
+    {
+      title: "Creative podcast production",
+      description: "'How I Make Music' executive podcast production",
+      link: "https://howimakemusic.com",
+      audioUrl:
+        "https://www.buzzsprout.com/1926734/11607725-dice-tower-theater-mike-atchley-dark-journey.mp3",
+    },
+  ];
 
   const trackUrl = {
     theatreland:
@@ -32,135 +77,11 @@ const Audio = () => {
 
   return (
     <div className="single-page-container">
-      <h1>Podcast production, audio editing, mixing & mastering.</h1>
-      {/* <h4>
-        <AudioPlayer
-          autoPlay={false}
-          src={currentTrack}
-          volume={0.1}
-          showSkipControls={false}
-          showJumpControls={false}
-          customAdditionalControls={[]}
-          layout="horizontal-reverse"
-          // onPlay={(e) => {}}
-          // other props here
-        />
-        <BsFillPlayCircleFill
-          font-size={"2rem"}
-          id="theatreland"
-          onClick={(e) => handleClick(e)}
-        />
-      </h4> */}
-      <h3>
-        GPS audio tour editing for{" "}
-        <a href="https://voicemap.me" target="_blank" rel="noopener">
-          VoiceMap
-        </a>{" "}
-      </h3>
-      <h4>
-        Listen to a clip from{" "}
-        <a href="https://voicemap.me/theatreland" target="_blank">
-          'Theatreland' (narrated by Ian McKellen)
-        </a>
-      </h4>
-      <h4>
-        <audio
-          controls
-          src="https://media.voicemap.me/public/sound_bites/clips/000/010/534/original/01_START_TKTS_Ticket_Booth.mp3"
-        ></audio>
-      </h4>
-      <h3>Non-fiction podcast production</h3>
-      <h4>
-        Listen to episode 10 of{" "}
-        <a
-          href="https://open.spotify.com/show/2HQNkLsuI9CoEnvPTZ2GIo"
-          target="_blank"
-        >
-          Think, African
-        </a>{" "}
-        by{" "}
-        <a href="https://soundafrica.org/" target="_blank">
-          Sound Africa
-        </a>{" "}
-        and{" "}
-        <a href="https://za.boell.org/" target="_blank">
-          The Heinrich Boell Foundation
-        </a>
-      </h4>
-      <h4>
-        <audio
-          controls
-          src="https://johnbartmann.com/site-audio-smp/think-african-10.mp3"
-        ></audio>
-      </h4>
-      <h4>
-        Listen to episode 1 of{" "}
-        <a
-          href="https://podcasts.apple.com/za/podcast/alibi/id1209845144?mt=2"
-          target="_blank"
-        >
-          Alibi
-        </a>{" "}
-        by{" "}
-        <a
-          href="https://www.volume.africa/alibi"
-          target="_blank"
-          rel="noopener"
-        >
-          Alibi Investigations
-        </a>
-      </h4>
-      <h4>
-        <audio
-          controls
-          src="https://johnbartmann.com/site-audio-smp/alibi-s01e01.mp3"
-        ></audio>
-      </h4>
-      <h3>Entertainment podcast production </h3>
-      <h4>
-        Listen to episode 1 of{" "}
-        <a href="https://telltale.media/our-shows/schalk/" target="_blank">
-          Your Mom With Schalk
-        </a>{" "}
-        by{" "}
-        <a href="https://telltale.media/" target="_blank">
-          Telltale Media
-        </a>
-      </h4>
-      <h4>
-        <audio
-          controls
-          src="https://media.transistor.fm/572b5785/7cbce5b6.mp3"
-        ></audio>
-      </h4>
-      <h3>Fiction podcast production </h3>
-      <h4>
-        Listen to episode 12 of{" "}
-        <a href="https://pod.link/Lafresiaaudio" target="_blank">
-          The LaFresian Chronicles
-        </a>{" "}
-        by Center Stage Collective
-      </h4>
-      <h4>
-        <audio
-          controls
-          src="https://pinecast.com/listen/4aafbddf-ba68-4d83-8b6f-34e48014a553.mp3"
-        ></audio>
-      </h4>
-      <strong />
-      <h3>Executive podcast production</h3>
-      <h4>
-        Listen to episode 110 of{" "}
-        <a href="https://howimakemusic.com" target="_blank" rel="noopener">
-          How I Make Music
-        </a>{" "}
-      </h4>
-      <h4>
-        <audio
-          controls
-          src="https://www.buzzsprout.com/1926734/11607725-dice-tower-theater-mike-atchley-dark-journey.mp3"
-        ></audio>
-      </h4>
+      <h1>AUDIO</h1>
+      {audioJobs.map((job) => {
+        return Card(job.title, job.description, job.link, job.audioUrl);
+      })}
+      <br />
       <br />
       <h1>PODCAST PRODUCTION & PROMOTIONAL TOOLS</h1>
       DAWs Hindenberg Broadcast Pro, Reaper, Ableton Live, Audacity
