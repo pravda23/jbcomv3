@@ -6,6 +6,7 @@
   --color-light-trans: hsla(0, 0%, 88%, 0.1);
   --color-dark: hsl(204, 64%, 54%);
   --color-highlight: hsl(27, 81%, 48%);
+  --color-highlight-trans: hsla(27, 81%, 48%, 0.137);
   --black: #272727;
 }
 
@@ -115,15 +116,14 @@ a:hover {
 .navbar {
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: row;
   justify-content: flex-start;
   margin-bottom: 2rem;
-  border-radius: 0.2rem;
   overflow-y: auto;
   color: white;
   background-color: var(--color-light-trans);
   border-bottom: 1px solid gray;
   width: 100%;
+  padding: 0rem;
 }
 
 .navbar::-webkit-scrollbar {
@@ -136,16 +136,41 @@ a:hover {
   flex-direction: row;
 }
 
-.navbar-chevron-container {
-  border-right: 1px solid red;
+.navbar-scroll-anchor-left {
+  position: sticky;
+  left: 0;
+  font-size: 3rem;
+}
+
+.navbar-scroll-anchor-right {
+  position: sticky;
+  right: 0;
+  font-size: 3rem;
+}
+
+.navbar-chevron-left,
+.navbar-chevron-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.2rem 0 0.2rem;
 }
 
 .navbar-chevron-left {
-  left: 1rem;
+  background-color: var(--color-light-trans);
+  border-bottom: 1px solid gray;
+  margin-bottom: 2rem;
+}
+
+.navbar-chevron-left:hover,
+.navbar-chevron-right:hover {
+  color: var(--color-dark);
 }
 
 .navbar-chevron-right {
-  right: 1rem;
+  background-color: var(--color-light-trans);
+  border-bottom: 1px solid gray;
+  margin-bottom: 2rem;
 }
 
 .btn-nav {
@@ -194,15 +219,34 @@ a:hover {
   border-radius: 0.5rem;
   background-color: var(--color-light-trans);
   margin-top: 0.5rem;
+  border-left: 0.5rem solid var(--color-dark);
+}
+
+.card-container:hover {
   border-left: 0.5rem solid var(--color-highlight);
+  background-color: var(--color-highlight-trans);
 }
 
 .card-title {
   width: 80%;
 }
 
+.card-title > h3 {
+  justify-content: flex-start;
+}
+
 .card-button {
   width: 20%;
+}
+
+.waveform {
+  width: 100%;
+  border: 3px solid red;
+}
+
+#waveform {
+  width: 100%;
+  border: 3px solid red;
 }
 
 .footer {

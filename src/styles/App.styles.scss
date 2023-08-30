@@ -7,6 +7,7 @@
   --color-light-trans: hsla(0, 0%, 88%, 0.1);
   --color-dark: hsl(204, 64%, 54%);
   --color-highlight: hsl(27, 81%, 48%);
+  --color-highlight-trans: hsla(27, 81%, 48%, 0.137);
   --black: #272727;
 }
 
@@ -153,7 +154,6 @@ a:hover {
   position: sticky;
   right: 0;
   font-size: 3rem;
-  // background: linear-gradient(90deg, transparent, var(--color-light-trans));
 }
 
 .navbar-chevron-left,
@@ -232,7 +232,12 @@ a:hover {
   border-radius: 0.5rem;
   background-color: var(--color-light-trans);
   margin-top: 0.5rem;
+  border-left: 0.5rem solid var(--color-dark);
+}
+
+.card-container:hover {
   border-left: 0.5rem solid var(--color-highlight);
+  background-color: var(--color-highlight-trans);
 }
 
 .card-title {
@@ -245,6 +250,16 @@ a:hover {
 
 .card-button {
   width: 20%;
+}
+
+.waveform {
+  width: 100%;
+  border: 3px solid red;
+}
+
+#waveform {
+  width: 100%;
+  border: 3px solid red;
 }
 
 .footer {
