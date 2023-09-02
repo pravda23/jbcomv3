@@ -10,6 +10,7 @@ import Audio from "./Audio.component";
 import Music from "./Music.component";
 import Writing from "./Writing.component";
 import Contact from "./Contact.component";
+import WaveSurfer from "wavesurfer.js";
 
 function App() {
   return (

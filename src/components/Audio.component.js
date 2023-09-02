@@ -1,19 +1,17 @@
-import { useState, useEffect } from "react";
-import AudioCard from "./AudioCard.component";
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/src/styles.scss";
 import {
   BsFillPlayCircleFill,
   BsFillPauseCircleFill,
   BsVolumeDown,
   BsVolumeMute,
 } from "react-icons/bs";
-import WaveSurfer from "wavesurfer.js";
+// Import React hooks
+import { useRef, useState, useEffect, useCallback } from "react";
+
+// Import WaveSurfer
+import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
+import WaveSurferPlayer from "./WaveSurferPlayer.js";
 
 const Audio = () => {
-  const [currentTrack, setCurrentTrack] = useState("");
-  const [isPlaying, setIsPlaying] = useState(false);
-
   const audioJobs = [
     {
       id: "0",
@@ -63,57 +61,64 @@ const Audio = () => {
     },
   ];
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log(e);
-    togglePlay();
-    setCurrentTrack(null);
+  const wavesurfer = WaveSurfer.create({
+    container: document.body,
+    waveColor: "#4F4A85",
+    progressColor: "#383351",
+    splitChannels: false,
+    url: "beep.mp3",
+  });
 
-    // setCurrentTrack(currentTrack);
+  const useWavesurfer = (containerRef, options) => {
+    const [wavesurfer, setWavesurfer] = useState(null);
+
+    // Initialize wavesurfer when the container mounts or any of the props change
+    useEffect(() => {
+      if (!containerRef.current) return;
+
+      const ws = WaveSurfer.create({
+        ...options,
+        container: containerRef.current,
+      });
+
+      setWavesurfer(ws);
+
+      return () => {
+        ws.destroy();
+      };
+    }, [options, containerRef]);
+
+    return wavesurfer;
   };
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-  };
-
-  // useEffect(() => {
-  //   const waveform = document.querySelector(".waveform");
-  //   console.log(waveform);
-  //   const wavesurfer = WaveSurfer.create(
-  //     {
-  //       container: waveform,
-  //       waveColor: "#4F4A85",
-  //       progressColor: "#383351",
-  //       url: audioJobs[0].audioUrl,
-  //     },
-  //     []
-  //   );
-  // });
 
   return (
     <div className="single-page-container">
-      <h1>AUDIO</h1>
-      {audioJobs.map((job) => {
-        return AudioCard(
-          job.title,
-          job.description,
-          job.link,
-          job.audioUrl,
-          job.id
-        );
-      })}
-      <br />
-      <br />
-      <h1>PODCAST PRODUCTION & PROMOTIONAL TOOLS</h1>
-      DAWs Hindenberg Broadcast Pro, Reaper, Ableton Live, Audacity
-      <br />
-      AUDIO REPAIR Izotope RX8 <br />
-      MUSIC COMPOSITION Native Instruments Komplete <br />
-      VIDEO - Veed.io, Adobe Premiere Pro
-      <br />
-      IMAGES - Adobe Photoshop
-      <br />
-      TRANSCRIPTS - Descript
+      <div className="card-container">
+        <div className="card-title">
+          {/* {audioJobs.map((job) => {
+            return ( */}
+          <div id="containerRef">
+            {" "}
+            <WaveSurferPlayer
+              height={100}
+              waveColor="rgb(200, 0, 200)"
+              progressColor="rgb(100, 0, 100)"
+              url={"beep.mp3"}
+            />
+          </div>
+          {/* {audioUrl ? <audio controls src={audioUrl}></audio> : null} */}
+          {/* {waveform} */}
+          {/* <div>{audioUrl ? wavesurfer : null}</div> */}
+          {/* );
+            // job.title, job.description, job.link, job.audioUrl, job.id;
+          })} */}
+          {/* <h3>{title}</h3> */}
+          {/* <h4>{item}</h4> */}
+        </div>
+        {/* <a href={link} target="_blank" rel="noopener">
+          <GoLinkExternal />
+        </a> */}
+      </div>
     </div>
   );
 };
