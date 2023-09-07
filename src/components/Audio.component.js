@@ -93,31 +93,16 @@ const Audio = () => {
 
   return (
     <div className="single-page-container">
-      <div className="card-container">
-        <div className="card-title">
-          {/* {audioJobs.map((job) => {
-            return ( */}
-          <div id="containerRef">
-            {" "}
-            <WaveSurferPlayer
-              height={100}
-              waveColor="rgb(200, 0, 200)"
-              progressColor="rgb(100, 0, 100)"
-              url={"beep.mp3"}
-            />
-          </div>
-          {/* {audioUrl ? <audio controls src={audioUrl}></audio> : null} */}
-          {/* {waveform} */}
-          {/* <div>{audioUrl ? wavesurfer : null}</div> */}
-          {/* );
-            // job.title, job.description, job.link, job.audioUrl, job.id;
-          })} */}
-          {/* <h3>{title}</h3> */}
-          {/* <h4>{item}</h4> */}
+      <div className="card-title">
+        <div id="containerRef">
+          {" "}
+          <WaveSurferPlayer
+            height={100}
+            waveColor="rgb(200, 0, 200)"
+            progressColor="rgb(100, 0, 100)"
+            url={"beep.mp3"}
+          />
         </div>
-        {/* <a href={link} target="_blank" rel="noopener">
-          <GoLinkExternal />
-        </a> */}
       </div>
     </div>
   );
