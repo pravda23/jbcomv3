@@ -9,7 +9,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 
 // Import WaveSurfer
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
-import WaveSurferPlayer from "./WaveSurferPlayer.js";
+import Player from "./Player.js";
 
 const Audio = () => {
   const audioJobs = [
@@ -61,47 +61,26 @@ const Audio = () => {
     },
   ];
 
-  const wavesurfer = WaveSurfer.create({
-    container: document.body,
-    waveColor: "#4F4A85",
-    progressColor: "#383351",
-    splitChannels: false,
-    url: "beep.mp3",
-  });
-
-  const useWavesurfer = (containerRef, options) => {
-    const [wavesurfer, setWavesurfer] = useState(null);
-
-    // Initialize wavesurfer when the container mounts or any of the props change
-    useEffect(() => {
-      if (!containerRef.current) return;
-
-      const ws = WaveSurfer.create({
-        ...options,
-        container: containerRef.current,
-      });
-
-      setWavesurfer(ws);
-
-      return () => {
-        ws.destroy();
-      };
-    }, [options, containerRef]);
-
-    return wavesurfer;
-  };
-
   return (
     <div className="single-page-container">
       <div className="card-title">
-        <div id="containerRef">
+        <div>
           {" "}
-          <WaveSurferPlayer
-            height={100}
-            waveColor="rgb(200, 0, 200)"
-            progressColor="rgb(100, 0, 100)"
-            url={"beep.mp3"}
-          />
+          {audioJobs.map((job) => {
+            return (
+              <div className="card-container">
+                <div className="card-title">
+                  <h1>{job.title}</h1>
+                  <Player
+                    height={100}
+                    waveColor="rgb(200, 0, 200)"
+                    progressColor="rgb(100, 0, 100)"
+                    url={job.audioUrl}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
