@@ -4,12 +4,11 @@ import {
   BsVolumeDown,
   BsVolumeMute,
 } from "react-icons/bs";
-// Import React hooks
 import { useRef, useState, useEffect, useCallback } from "react";
+// import Player from "./Player.js";
 
 // Import WaveSurfer
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
-import Player from "./Player.js";
 
 const Audio = () => {
   const audioJobs = [
@@ -61,27 +60,93 @@ const Audio = () => {
     },
   ];
 
+  // WaveSurfer hook
+  const useWavesurfer = (containerRef, options) => {
+    const [wavesurfer, setWavesurfer] = useState(null);
+
+    // Initialize wavesurfer when the container mounts or any of the props change
+    useEffect(() => {
+      if (!containerRef.current);
+
+      const ws = WaveSurfer.create({
+        ...options,
+        container: containerRef.current,
+      });
+
+      setWavesurfer(ws);
+
+      return () => {
+        ws.destroy();
+      };
+    }, [options, containerRef]);
+
+    return wavesurfer;
+  };
+
+  // Create a React component that will render wavesurfer. Props are wavesurfer options.
+
+  const WaveSurferPlayer = (props) => {
+    const containerRef = useRef();
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
+    const wavesurfer = useWavesurfer(containerRef, props);
+
+    // On play button click
+    const onPlayClick = useCallback(() => {
+      wavesurfer.isPlaying() ? wavesurfer.pause() : wavesurfer.play();
+    }, [wavesurfer]);
+
+    // Initialize wavesurfer when the container mounts or any of the props change
+    useEffect(() => {
+      if (!wavesurfer) return;
+
+      setCurrentTime(0);
+      setIsPlaying(false);
+      // setCurrentAudioUrl(audioJobs.url);
+
+      const subscriptions = [
+        wavesurfer.on("play", () => setIsPlaying(true)),
+        wavesurfer.on("pause", () => setIsPlaying(false)),
+        wavesurfer.on("timeupdate", (currentTime) =>
+          setCurrentTime(currentTime)
+        ),
+      ];
+
+      return () => {
+        subscriptions.forEach((unsub) => unsub());
+      };
+    }, [wavesurfer]);
+
+    return (
+      <>
+        <div ref={containerRef} />
+
+        <button onClick={onPlayClick} style={{ marginTop: "1em" }}>
+          {isPlaying ? "Pause" : "Play"}
+        </button>
+        <p>Seconds played: {currentTime}</p>
+      </>
+    );
+  };
+
   return (
     <div className="single-page-container">
       <div className="card-title">
-        <div>
-          {" "}
-          {audioJobs.map((job) => {
-            return (
-              <div className="card-container">
-                <div className="card-title">
-                  <h1>{job.title}</h1>
-                  <Player
-                    height={100}
-                    waveColor="rgb(200, 0, 200)"
-                    progressColor="rgb(100, 0, 100)"
-                    url={job.audioUrl}
-                  />
-                </div>
+        {audioJobs.map((job) => {
+          return (
+            <div key={job.id} className="card-container">
+              <div className="card-title">
+                <h1>{job.title}</h1>
+                <WaveSurferPlayer
+                  height={100}
+                  waveColor="rgb(200, 0, 200)"
+                  progressColor="rgb(100, 0, 100)"
+                  url={job.audioUrl}
+                />
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

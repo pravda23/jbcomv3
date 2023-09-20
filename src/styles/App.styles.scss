@@ -132,17 +132,20 @@ a:hover {
   border-bottom: 1px solid gray;
   width: 100%;
   padding: 0rem;
+  scroll-behavior: smooth;
   // scrollbar: none;
 }
 
 .navbar::-webkit-scrollbar {
   display: none;
+  scroll-behavior: smooth;
 }
 
 .navbar-links-container {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
+  scroll-behavior: smooth;
 }
 
 .navbar-scroll-anchor-left {
