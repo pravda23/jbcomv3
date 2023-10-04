@@ -4,11 +4,13 @@ import {
   BsVolumeDown,
   BsVolumeMute,
 } from "react-icons/bs";
+// Import React hooks
 import { useRef, useState, useEffect, useCallback } from "react";
-import Player from "./Player.component.js";
 
 // Import WaveSurfer
-import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
+// import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
+import AudioWaveform from "./AudioWaveform.component.js";
+import Player from "./Player.component.js";
 
 const Audio = () => {
   const audioJobs = [
@@ -53,6 +55,7 @@ const Audio = () => {
     {
       id: "5",
       title: "Creative podcast production",
+
       description: "'How I Make Music' executive podcast production",
       link: "https://howimakemusic.com",
       audioUrl:
@@ -60,96 +63,55 @@ const Audio = () => {
     },
   ];
 
-  // WaveSurfer hook
-  const useWavesurfer = (containerRef, options) => {
-    const [wavesurfer, setWavesurfer] = useState(null);
+  const audioFiles = [
+    "african-bliss-master.mp3",
+    "african-moon.mp3",
+    "african-secret-master.mp3",
+  ];
 
-    // Initialize wavesurfer when the container mounts or any of the props change
-    useEffect(() => {
-      if (!containerRef.current);
-
-      const ws = WaveSurfer.create({
-        ...options,
-        container: containerRef.current,
-      });
-
-      setWavesurfer(ws);
-
-      return () => {
-        ws.destroy();
-      };
-    }, [options, containerRef]);
-
-    return wavesurfer;
-  };
-
-  // Create a React component that will render wavesurfer. Props are wavesurfer options.
-
-  const WaveSurferPlayer = (props) => {
-    const containerRef = useRef();
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0);
-    const wavesurfer = useWavesurfer(containerRef, props);
-
-    // On play button click
-    const onPlayClick = useCallback(() => {
-      wavesurfer.isPlaying() ? wavesurfer.pause() : wavesurfer.play();
-    }, [wavesurfer]);
-
-    // Initialize wavesurfer when the container mounts or any of the props change
-    useEffect(() => {
-      if (!wavesurfer) return;
-
-      setCurrentTime(0);
-      setIsPlaying(false);
-      // setCurrentAudioUrl(audioJobs.url);
-
-      const subscriptions = [
-        wavesurfer.on("play", () => setIsPlaying(true)),
-        wavesurfer.on("pause", () => setIsPlaying(false)),
-        wavesurfer.on("timeupdate", (currentTime) =>
-          setCurrentTime(currentTime)
-        ),
-      ];
-
-      return () => {
-        subscriptions.forEach((unsub) => unsub());
-      };
-    }, [wavesurfer]);
-
-    return (
-      <>
-        <div ref={containerRef} />
-
-        <button onClick={onPlayClick} style={{ marginTop: "1em" }}>
-          {isPlaying ? "Pause" : "Play"}
-        </button>
-        <p>Seconds played: {currentTime}</p>
-      </>
-    );
-  };
+  // const audioFiles = ['audio1.mp3', 'audio2.mp3', 'audio3.mp3']; // Replace with your array of audio files
 
   return (
     <div className="single-page-container">
       <div className="card-title">
-        {audioJobs.map((job) => {
-          return (
-            <div key={job.id} className="card-container">
+        <div>
+          {audioFiles.map((audioFile, index) => (
+            <>
+              <div>playbutton</div>
               <div>
-                <h1>{job.title}</h1>
-                <Player
-                  height={100}
-                  waveColor="rgb(200, 0, 200)"
-                  progressColor="rgb(100, 0, 100)"
-                  url={job.audioUrl}
-                />
+                <AudioWaveform key={index} audioFile={audioFile} />
               </div>
-            </div>
-          );
-        })}
+            </>
+          ))}
+        </div>
       </div>
     </div>
   );
+
+  // return (
+  //   <div className="single-page-container">
+  //     <div className="card-title">
+  //       <div>
+  //         {" "}
+  //         {audioJobs.map((job) => {
+  //           return (
+  //             <div className="card-container">
+  //               <div className="card-title">
+  //                 <h1>{job.title}</h1>
+  //                 <Player
+  //                   height={100}
+  //                   waveColor="rgb(200, 0, 200)"
+  //                   progressColor="rgb(100, 0, 100)"
+  //                   url={job.audioUrl}
+  //                 />
+  //               </div>
+  //             </div>
+  //           );
+  //         })}
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default Audio;
