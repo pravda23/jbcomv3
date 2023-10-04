@@ -8,8 +8,9 @@ import {
 import { useRef, useState, useEffect, useCallback } from "react";
 
 // Import WaveSurfer
-import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
-import Player from "./Player.js";
+// import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
+import AudioWaveform from "./AudioWaveform.component.js";
+import Player from "./Player.component.js";
 
 const Audio = () => {
   const audioJobs = [
@@ -54,6 +55,7 @@ const Audio = () => {
     {
       id: "5",
       title: "Creative podcast production",
+
       description: "'How I Make Music' executive podcast production",
       link: "https://howimakemusic.com",
       audioUrl:
@@ -61,30 +63,55 @@ const Audio = () => {
     },
   ];
 
+  const audioFiles = [
+    "african-bliss-master.mp3",
+    "african-moon.mp3",
+    "african-secret-master.mp3",
+  ];
+
+  // const audioFiles = ['audio1.mp3', 'audio2.mp3', 'audio3.mp3']; // Replace with your array of audio files
+
   return (
     <div className="single-page-container">
       <div className="card-title">
         <div>
-          {" "}
-          {audioJobs.map((job) => {
-            return (
-              <div className="card-container">
-                <div className="card-title">
-                  <h1>{job.title}</h1>
-                  <Player
-                    height={100}
-                    waveColor="rgb(200, 0, 200)"
-                    progressColor="rgb(100, 0, 100)"
-                    url={job.audioUrl}
-                  />
-                </div>
+          {audioFiles.map((audioFile, index) => (
+            <>
+              <div>playbutton</div>
+              <div>
+                <AudioWaveform key={index} audioFile={audioFile} />
               </div>
-            );
-          })}
+            </>
+          ))}
         </div>
       </div>
     </div>
   );
+
+  // return (
+  //   <div className="single-page-container">
+  //     <div className="card-title">
+  //       <div>
+  //         {" "}
+  //         {audioJobs.map((job) => {
+  //           return (
+  //             <div className="card-container">
+  //               <div className="card-title">
+  //                 <h1>{job.title}</h1>
+  //                 <Player
+  //                   height={100}
+  //                   waveColor="rgb(200, 0, 200)"
+  //                   progressColor="rgb(100, 0, 100)"
+  //                   url={job.audioUrl}
+  //                 />
+  //               </div>
+  //             </div>
+  //           );
+  //         })}
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default Audio;
