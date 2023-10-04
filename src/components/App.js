@@ -1,16 +1,16 @@
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import "../styles/App.styles.scss";
 
-import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { FaEnvelope, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 import Home from "./Home.component";
 import Navbar from "./Navbar.component";
 import Footer from "./Footer.component";
 import Audio from "./Audio.component";
+import AudioBeta from "./AudioBeta.component";
+
 import Music from "./Music.component";
 import Writing from "./Writing.component";
 import Contact from "./Contact.component";
-import WaveSurfer from "wavesurfer.js";
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
             <Routes>
               <Route index element={<Home />} />
               <Route path="/writing" element={<Writing />} />
-              <Route path="/audio" element={<Audio />} />
+              <Route path="/audio" element={<AudioBeta />} />
               <Route path="/music" element={<Music />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>

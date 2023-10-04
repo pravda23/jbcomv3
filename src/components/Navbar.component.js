@@ -16,10 +16,8 @@ const Navbar = () => {
       block: "nearest",
       inline: "center",
     });
-    console.log(leftChevron.current);
   }
   function goRight() {
-    console.log("move right");
     rightChevron.current.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
@@ -29,7 +27,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      <div className="navbar-chevron-left" onClick={goLeft}>
+      <div className="navbar-chevron-left" onMouseOver={goLeft}>
         <BsFillArrowLeftCircleFill size={20} opacity={0.3} />
       </div>
       <div className="navbar">
@@ -62,18 +60,14 @@ const Navbar = () => {
             {" "}
             <h1 className="btn-nav">CONTACT</h1>
           </Link>
-          <Link to="/contact">
+          <Link ref={rightChevron} to="/contact">
             {" "}
-            <h1 className="btn-nav">CONTACT</h1>
+            <h1 className="btn-nav">FINAL</h1>
           </Link>
         </div>
       </div>
       <div className="navbar-scroll-anchor-right"></div>
-      <div
-        className="navbar-chevron-right"
-        ref={rightChevron}
-        onClick={goRight}
-      >
+      <div className="navbar-chevron-right" onMouseOver={goRight}>
         <BsFillArrowRightCircleFill size={20} opacity={0.3} />
       </div>
     </div>
