@@ -5,7 +5,7 @@ import {
   BsVolumeMute,
 } from "react-icons/bs";
 import { useRef, useState, useEffect, useCallback } from "react";
-// import Player from "./Player.js";
+import Player from "./Player.component.js";
 
 // Import WaveSurfer
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
@@ -135,9 +135,9 @@ const Audio = () => {
         {audioJobs.map((job) => {
           return (
             <div key={job.id} className="card-container">
-              <div className="card-title">
+              <div>
                 <h1>{job.title}</h1>
-                <WaveSurferPlayer
+                <Player
                   height={100}
                   waveColor="rgb(200, 0, 200)"
                   progressColor="rgb(100, 0, 100)"

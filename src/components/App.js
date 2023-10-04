@@ -6,8 +6,6 @@ import Home from "./Home.component";
 import Navbar from "./Navbar.component";
 import Footer from "./Footer.component";
 import Audio from "./Audio.component";
-import AudioBeta from "./AudioBeta.component";
-
 import Music from "./Music.component";
 import Writing from "./Writing.component";
 import Contact from "./Contact.component";
@@ -44,7 +42,7 @@ function App() {
             <Routes>
               <Route index element={<Home />} />
               <Route path="/writing" element={<Writing />} />
-              <Route path="/audio" element={<AudioBeta />} />
+              <Route path="/audio" element={<Audio />} />
               <Route path="/music" element={<Music />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
