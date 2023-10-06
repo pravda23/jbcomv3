@@ -4,13 +4,8 @@ import {
   BsVolumeDown,
   BsVolumeMute,
 } from "react-icons/bs";
-// Import React hooks
 import { useRef, useState, useEffect, useCallback } from "react";
-
-// Import WaveSurfer
-// import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 import AudioWaveform from "./AudioWaveform.component.js";
-import Player from "./Player.component.js";
 
 const Audio = () => {
   const audioJobs = [
@@ -63,23 +58,39 @@ const Audio = () => {
     },
   ];
 
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+
   const audioFiles = [
-    "african-bliss-master.mp3",
-    "african-moon.mp3",
-    "african-secret-master.mp3",
+    {
+      id: "a",
+      url: "african-bliss-master.mp3",
+    },
+    {
+      id: "b",
+      url: "african-moon.mp3",
+    },
+    {
+      id: "c",
+      url: "african-secret-master.mp3",
+    },
   ];
 
-  // const audioFiles = ['audio1.mp3', 'audio2.mp3', 'audio3.mp3']; // Replace with your array of audio files
+  const playPause = () => (e) => {
+    console.log(e.target);
+  };
 
   return (
     <div className="single-page-container">
       <div className="card-title">
         <div>
-          {audioFiles.map((audioFile, index) => (
+          {audioFiles.map((audioFile, id) => (
             <>
-              <div>playbutton</div>
               <div>
-                <AudioWaveform key={index} audioFile={audioFile} />
+                <button onClick={playPause()}>Click</button>
+              </div>
+              <div>
+                <AudioWaveform key={id} audioFile={audioFile} />
               </div>
             </>
           ))}
