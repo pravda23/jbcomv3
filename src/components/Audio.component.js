@@ -58,8 +58,8 @@ const Audio = () => {
     },
   ];
 
+  const [currentFile, setCurrentFile] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
 
   const audioFiles = [
     {
@@ -76,8 +76,11 @@ const Audio = () => {
     },
   ];
 
-  const playPause = () => (e) => {
-    console.log(e.target);
+  console.log(currentFile);
+
+  const clickHandle = (e) => {
+    setCurrentFile(e);
+    setIsPlaying(e);
   };
 
   return (
@@ -87,10 +90,11 @@ const Audio = () => {
           {audioFiles.map((audioFile, id) => (
             <>
               <div>
-                <button onClick={playPause()}>Click</button>
-              </div>
-              <div>
-                <AudioWaveform key={id} audioFile={audioFile} />
+                <AudioWaveform
+                  key={audioFile.id}
+                  audioFile={audioFile}
+                  clickHandle={clickHandle}
+                />
               </div>
             </>
           ))}

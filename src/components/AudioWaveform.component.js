@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import WaveSurfer from "wavesurfer.js";
 
-function AudioWaveform({ audioFile }) {
+function AudioWaveform({ audioFile, clickHandle, isPlaying }) {
   const waveformRef = useRef(null);
 
   useEffect(() => {
@@ -24,6 +24,11 @@ function AudioWaveform({ audioFile }) {
     //   wavesurfer.play();
     // });
 
+    // const playPause = () => {
+    //   currentFile === e ? wavesurfer.pause() : wavesurfer.play();
+    // };
+    // playPause();
+
     return () => {
       wavesurfer.destroy();
     };
@@ -31,7 +36,9 @@ function AudioWaveform({ audioFile }) {
 
   return (
     <div>
-      <div ref={waveformRef}></div>
+      <div ref={waveformRef}>
+        <button onClick={() => clickHandle(audioFile.url)}>Click</button>
+      </div>
     </div>
   );
 }
