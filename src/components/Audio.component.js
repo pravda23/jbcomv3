@@ -58,7 +58,7 @@ const Audio = () => {
     },
   ];
 
-  const [currentFile, setCurrentFile] = useState("");
+  const [currentFile, setCurrentFile] = useState("african-bliss-master.mp3");
   const [isPlaying, setIsPlaying] = useState(false);
 
   const audioFiles = [
@@ -76,28 +76,20 @@ const Audio = () => {
     },
   ];
 
-  console.log(currentFile);
-
   const clickHandle = (e) => {
     setCurrentFile(e);
-    setIsPlaying(e);
+    setIsPlaying(true);
   };
 
   return (
     <div className="single-page-container">
       <div className="card-title">
         <div>
-          {audioFiles.map((audioFile, id) => (
-            <>
-              <div>
-                <AudioWaveform
-                  key={audioFile.id}
-                  audioFile={audioFile}
-                  clickHandle={clickHandle}
-                />
-              </div>
-            </>
-          ))}
+          {/* {audioFiles.map((audioFile) => (
+            <div key={audioFile.id}> */}
+          <AudioWaveform audioFiles={audioFiles} clickHandle={clickHandle} />
+          {/* </div>
+          ))} */}
         </div>
       </div>
     </div>
