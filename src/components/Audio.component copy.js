@@ -1,10 +1,4 @@
-import {
-  BsFillPlayCircleFill,
-  BsFillPauseCircleFill,
-  BsVolumeDown,
-  BsVolumeMute,
-} from "react-icons/bs";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import AudioWaveform from "./AudioWaveform.component.js";
 
 const Audio = () => {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-// import WaveSurfer from "wavesurfer.js";
 import {
   BsFillPlayCircleFill,
   BsFillPauseCircleFill,
