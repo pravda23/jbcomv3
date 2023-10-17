@@ -65,9 +65,9 @@ h3 {
   font-size: 3rem;
 }
 
-.hero-title > h3 {
-  // min-height: 20vh;
-
+.hero-title > p {
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
 }
 
@@ -105,7 +105,7 @@ a:hover {
 }
 
 .content-container {
-  // background-image: url("https://johnbartmann.com/images/headshot-corporate.jpg");
+  background-image: url("https://johnbartmann.com/images/headshot-corporate.jpg");
   object-fit: cover;
   background-size: cover;
   background-position: top;

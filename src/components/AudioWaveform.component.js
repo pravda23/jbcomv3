@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import WaveSurfer from "wavesurfer.js";
+// import WaveSurfer from "wavesurfer.js";
+import {
+  BsFillPlayCircleFill,
+  BsFillPauseCircleFill,
+  BsVolumeDown,
+  BsVolumeMute,
+} from "react-icons/bs";
 
 const AudioWaveform = ({ audioFiles }) => {
   const wavesurferRef = useRef(null);
-  const [currentAudio, setCurrentAudio] = useState(null);
+  const [currentAudio, setCurrentAudio] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -15,25 +21,26 @@ const AudioWaveform = ({ audioFiles }) => {
       height: 100,
       responsive: true,
     });
+
     wavesurfer.load(currentAudio);
-    wavesurfer.play();
-
-    // Load audio when the component mounts
-    if (currentAudio) {
+    wavesurfer.once("interaction", () => {
+      console.log("wavesurfer play 1");
       setIsPlaying(true);
-
-      // wavesurfer.once("interaction", () => {
-      // });
-    }
+      wavesurfer.play();
+    });
 
     return () => {
       // Clean up the WaveSurfer instance
       wavesurfer.destroy();
+      console.log("wavesurfer destroy");
     };
-  }, [currentAudio]);
+  }, [currentAudio, isPlaying]);
 
   const handleAudioSelect = (audioFile) => {
     setCurrentAudio(`${audioFile}`);
+    console.log("setcurrentaudio");
+    setIsPlaying(true);
+    console.log("setisplayingtrue");
   };
 
   return (
@@ -42,9 +49,11 @@ const AudioWaveform = ({ audioFiles }) => {
         <div>
           {audioFiles.map((audioFile) => (
             <div key={audioFile.id}>
-              <button onClick={() => handleAudioSelect(audioFile.url)}>
+              <BsFillPlayCircleFill
+                onClick={() => handleAudioSelect(audioFile.url)}
+              >
                 {audioFile.url}
-              </button>
+              </BsFillPlayCircleFill>
             </div>
           ))}
         </div>
