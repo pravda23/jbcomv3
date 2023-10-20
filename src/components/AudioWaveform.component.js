@@ -1,3 +1,4 @@
+import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 import React, { useState, useEffect, useRef } from "react";
 import {
   BsFillPlayCircleFill,
@@ -8,38 +9,66 @@ import {
 
 const AudioWaveform = ({ audioFiles }) => {
   const wavesurferRef = useRef(null);
-  const [currentAudio, setCurrentAudio] = useState();
-  const [isPlaying, setIsPlaying] = useState(false);
+  const wavesurferObjRef = useRef(null);
+  const [currentAudio, setCurrentAudio] = useState(undefined);
+  const [playingState, setPlayingState] = useState("notStarted");
 
   useEffect(() => {
+    if (currentAudio === undefined) {
+      return;
+    }
+
     // Create a new WaveSurfer instance
     const wavesurfer = WaveSurfer.create({
       container: wavesurferRef.current,
-      waveColor: "violet",
-      progressColor: "purple",
+      waveColor: "white",
+      progressColor: "#2665ad",
       height: 100,
       responsive: true,
+      height: 128,
+      barWidth: 12,
+      barRadius: 10,
     });
 
+    wavesurferObjRef.current = wavesurfer;
+
     wavesurfer.load(currentAudio);
-    wavesurfer.once("interaction", () => {
+    wavesurfer.once("ready", () => {
       console.log("wavesurfer play 1");
-      setIsPlaying(true);
       wavesurfer.play();
     });
+
+    wavesurfer.on("play", () => {
+      setPlayingState("play");
+    });
+    wavesurfer.on("pause", () => {
+      setPlayingState("pause");
+    });
+    wavesurfer.on("finish", () => {
+      setPlayingState("finish");
+    });
+
+    console.log("h" + wavesurfer);
 
     return () => {
       // Clean up the WaveSurfer instance
       wavesurfer.destroy();
       console.log("wavesurfer destroy");
     };
-  }, [currentAudio, isPlaying]);
+  }, [currentAudio]);
 
   const handleAudioSelect = (audioFile) => {
-    setCurrentAudio(`${audioFile}`);
+    console.log("g" + wavesurferObjRef.current);
+    if (currentAudio === audioFile) {
+      if (playingState === "play") {
+        wavesurferObjRef.current.pause();
+      } else {
+        wavesurferObjRef.current.play();
+      }
+      return;
+    }
+    setCurrentAudio(audioFile);
     console.log("setcurrentaudio");
-    setIsPlaying(true);
-    console.log("setisplayingtrue");
   };
 
   return (
@@ -48,11 +77,19 @@ const AudioWaveform = ({ audioFiles }) => {
         <div>
           {audioFiles.map((audioFile) => (
             <div key={audioFile.id}>
-              <BsFillPlayCircleFill
-                onClick={() => handleAudioSelect(audioFile.url)}
-              >
-                {audioFile.url}
-              </BsFillPlayCircleFill>
+              {currentAudio === audioFile.url && playingState === "play" ? (
+                <BsFillPauseCircleFill
+                  onClick={() => handleAudioSelect(audioFile.url)}
+                >
+                  {audioFile.url}
+                </BsFillPauseCircleFill>
+              ) : (
+                <BsFillPlayCircleFill
+                  onClick={() => handleAudioSelect(audioFile.url)}
+                >
+                  {audioFile.url}
+                </BsFillPlayCircleFill>
+              )}
             </div>
           ))}
         </div>

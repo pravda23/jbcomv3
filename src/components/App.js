@@ -5,7 +5,7 @@ import { FaEnvelope, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 import Home from "./Home.component";
 import Navbar from "./Navbar.component";
 import Footer from "./Footer.component";
-import AudioW from "./AudioW.component";
+import Audio from "./Audio.component";
 import Music from "./Music.component";
 import Writing from "./Writing.component";
 import Contact from "./Contact.component";
@@ -43,7 +43,7 @@ function App() {
             <Routes>
               <Route index element={<Home />} />
               <Route path="/writing" element={<Writing />} />
-              {/* <Route path="/audio" element={<AudioW />} /> */}
+              <Route path="/audio" element={<Audio />} />
               <Route path="/music" element={<Music />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/faq" element={<FAQ />} />
