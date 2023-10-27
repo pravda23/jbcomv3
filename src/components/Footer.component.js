@@ -8,7 +8,7 @@ import "../styles/App.styles.scss";
 
 const Footer = () => {
   return (
-    <>
+    <div className="footer">
       <a href="mailto:hi@johnbartmann.com" target="_blank">
         <FaEnvelope className="m-1" fontSize="1.5rem" />
       </a>
@@ -18,7 +18,7 @@ const Footer = () => {
       <a href="https://www.linkedin.com/in/johnbartmann/" target="_blank">
         <FaLinkedin className="m-1" fontSize="1.5rem" />
       </a>
-    </>
+    </div>
   );
 };
 

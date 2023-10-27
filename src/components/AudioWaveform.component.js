@@ -10,8 +10,13 @@ import {
 const AudioWaveform = ({ audioFiles }) => {
   const wavesurferRef = useRef(null);
   const wavesurferObjRef = useRef(null);
-  const [currentAudio, setCurrentAudio] = useState(undefined);
+  const [currentAudio, setCurrentAudio] = useState("african-bliss-master.mp3");
+  const [currentTitle, setCurrentTitle] = useState("placeholder");
+  const [currentImage, setCurrentImage] = useState(
+    "https://source.unsplash.com/collection/1163637/50x50"
+  );
   const [playingState, setPlayingState] = useState("notStarted");
+  const [wavesurferPlayBtn, setwavesurferPlayBtn] = useState(false);
 
   useEffect(() => {
     if (currentAudio === undefined) {
@@ -23,18 +28,18 @@ const AudioWaveform = ({ audioFiles }) => {
       container: wavesurferRef.current,
       waveColor: "white",
       progressColor: "#2665ad",
+      background: "black",
       height: 100,
       responsive: true,
-      height: 128,
-      barWidth: 12,
-      barRadius: 10,
+      height: 24,
+      barWidth: 4,
+      barRadius: 4,
     });
 
     wavesurferObjRef.current = wavesurfer;
 
     wavesurfer.load(currentAudio);
     wavesurfer.once("ready", () => {
-      console.log("wavesurfer play 1");
       wavesurfer.play();
     });
 
@@ -48,27 +53,26 @@ const AudioWaveform = ({ audioFiles }) => {
       setPlayingState("finish");
     });
 
-    console.log("h" + wavesurfer);
-
     return () => {
-      // Clean up the WaveSurfer instance
       wavesurfer.destroy();
-      console.log("wavesurfer destroy");
     };
-  }, [currentAudio]);
+  }, [currentAudio, currentTitle]);
 
-  const handleAudioSelect = (audioFile) => {
-    console.log("g" + wavesurferObjRef.current);
-    if (currentAudio === audioFile) {
+  // sets current audio and playback state
+  const handleAudioSelect = ({ audioFile }) => {
+    if (currentAudio === audioFile.url) {
       if (playingState === "play") {
         wavesurferObjRef.current.pause();
+        setwavesurferPlayBtn(false);
       } else {
         wavesurferObjRef.current.play();
+        setwavesurferPlayBtn(true);
       }
       return;
     }
-    setCurrentAudio(audioFile);
-    console.log("setcurrentaudio");
+    setCurrentTitle(audioFile.title);
+    setCurrentAudio(audioFile.url);
+    setCurrentImage(audioFile.imgUrl);
   };
 
   return (
@@ -76,25 +80,37 @@ const AudioWaveform = ({ audioFiles }) => {
       <div className="audio-list">
         <div>
           {audioFiles.map((audioFile) => (
-            <div key={audioFile.id}>
-              {currentAudio === audioFile.url && playingState === "play" ? (
+            <div
+              key={audioFile.id}
+              onClick={() => handleAudioSelect({ audioFile })}
+            >
+              <img src={audioFile.imgUrl} />
+              {/* {currentAudio === audioFile.url && playingState === "play" ? (
                 <BsFillPauseCircleFill
-                  onClick={() => handleAudioSelect(audioFile.url)}
+                  onClick={() => handleAudioSelect({ audioFile })}
                 >
                   {audioFile.url}
                 </BsFillPauseCircleFill>
               ) : (
                 <BsFillPlayCircleFill
-                  onClick={() => handleAudioSelect(audioFile.url)}
+                  onClick={() => handleAudioSelect({ audioFile })}
                 >
                   {audioFile.url}
                 </BsFillPlayCircleFill>
-              )}
+              )} */}
+              {audioFile.title}
             </div>
           ))}
         </div>
       </div>
-      <div ref={wavesurferRef}></div>
+      <div className="wavesurfer-container">
+        <div className="wavesurfer-img">
+          <img src={currentImage} />
+        </div>
+        <div className="wavesurfer-waveform">
+          <div ref={wavesurferRef}>{currentTitle}</div>
+        </div>
+      </div>
     </div>
   );
 };

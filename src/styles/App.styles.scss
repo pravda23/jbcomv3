@@ -198,6 +198,16 @@ a:hover {
   animation-duration: 300ms;
 }
 
+.single-page-container-with-player {
+  animation-name: fadeIn;
+  animation-duration: 300ms;
+  height: 55vh;
+  border: 1px solid red;
+  // overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
 .player-icon {
   display: flex;
   justify-content: flex-end;
@@ -210,9 +220,6 @@ a:hover {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   justify-items: center;
-  // flex-direction: row;
-  // justify-content: space-around;
-  // border: 1px solid red;
 }
 
 .gallery-item-container {
@@ -220,7 +227,6 @@ a:hover {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  // border: 1px solid blue;
 }
 
 .card-container {
@@ -250,11 +256,6 @@ a:hover {
 
 .card-button {
   width: 20%;
-}
-
-#waveform {
-  width: 100%;
-  border: 3px solid red;
 }
 
 .footer {
@@ -304,12 +305,41 @@ a:hover {
   color: var(--color-dark);
 }
 
-audio {
-  // filter: invert(100%);
-  filter: sepia(80%) saturate(30%) grayscale(1) contrast(99%) invert(80%);
-  // width: 200px;
-  // height: 25px;
-  padding-top: 1rem;
+.music-profiles {
+  position: fixed;
+  bottom: 0;
+  height: 15%;
+  // padding: 1rem;
+}
+
+.audio-player {
+  position: fixed;
+  background-color: red;
+  bottom: 0;
+  height: 15%;
+  padding: 0.5rem;
+}
+
+.wavesurfer-container {
+  position: absolute;
+  display: flex;
+  bottom: 1rem;
+  max-height: 15vh;
+  width: 90%;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+}
+.wavesurfer-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wavesurfer-waveform {
+  width: 100%;
+  padding-left: 0.5rem;
 }
 
 @media (min-width: 600px) {

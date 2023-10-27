@@ -50,9 +50,6 @@ function App() {
             </Routes>
           </BrowserRouter>
         </div>
-        <div className="footer">
-          <Footer />
-        </div>
       </div>
     </div>
   );
