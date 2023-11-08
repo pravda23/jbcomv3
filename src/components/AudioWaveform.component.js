@@ -10,15 +10,20 @@ import {
 const AudioWaveform = ({ audioFiles }) => {
   const wavesurferRef = useRef(null);
   const wavesurferObjRef = useRef(null);
-  const [currentAudio, setCurrentAudio] = useState("african-bliss-master.mp3");
-  const [currentTitle, setCurrentTitle] = useState("placeholder");
+  const [currentAudio, setCurrentAudio] = useState();
+  const [currentTitle, setCurrentTitle] = useState(
+    "Select a track to start playing"
+  );
   const [currentImage, setCurrentImage] = useState(
     "https://source.unsplash.com/collection/1163637/50x50"
   );
   const [playingState, setPlayingState] = useState("notStarted");
   const [wavesurferPlayBtn, setwavesurferPlayBtn] = useState(false);
 
+  console.log("before useEffect");
+
   useEffect(() => {
+    console.log("first line of useEffect");
     if (currentAudio === undefined) {
       return;
     }
@@ -53,6 +58,8 @@ const AudioWaveform = ({ audioFiles }) => {
       setPlayingState("finish");
     });
 
+    console.log("before useEffect return");
+
     return () => {
       wavesurfer.destroy();
     };
@@ -75,6 +82,18 @@ const AudioWaveform = ({ audioFiles }) => {
     setCurrentImage(audioFile.imgUrl);
   };
 
+  const handleAudioPlayPause = () => {
+    if (playingState === "play") {
+      wavesurferObjRef.current.pause();
+      console.log("paused");
+    } else {
+      wavesurferObjRef.current.play();
+      console.log("playign");
+    }
+  };
+
+  console.log("before AudioWaveform render");
+
   return (
     <div>
       <div className="audio-list">
@@ -85,27 +104,17 @@ const AudioWaveform = ({ audioFiles }) => {
               onClick={() => handleAudioSelect({ audioFile })}
             >
               <img src={audioFile.imgUrl} />
-              {/* {currentAudio === audioFile.url && playingState === "play" ? (
-                <BsFillPauseCircleFill
-                  onClick={() => handleAudioSelect({ audioFile })}
-                >
-                  {audioFile.url}
-                </BsFillPauseCircleFill>
-              ) : (
-                <BsFillPlayCircleFill
-                  onClick={() => handleAudioSelect({ audioFile })}
-                >
-                  {audioFile.url}
-                </BsFillPlayCircleFill>
-              )} */}
+              &nbsp;
               {audioFile.title}
             </div>
           ))}
         </div>
       </div>
       <div className="wavesurfer-container">
-        <div className="wavesurfer-img">
-          <img src={currentImage} />
+        <div className="wavesurfer-img" onClick={() => handleAudioPlayPause()}>
+          <div className="wavesurfer-img-overlay">
+            <img src={currentImage} />
+          </div>
         </div>
         <div className="wavesurfer-waveform">
           <div ref={wavesurferRef}>{currentTitle}</div>
@@ -114,49 +123,5 @@ const AudioWaveform = ({ audioFiles }) => {
     </div>
   );
 };
-
-// PREVIOUS
-
-// function AudioWaveform({ audioFile, clickHandle }) {
-//   const waveformRef = useRef(null);
-
-//   useEffect(() => {
-//     const wavesurfer = WaveSurfer.create({
-//       container: waveformRef.current,
-//       responsive: true,
-//       waveColor: "white",
-//       progressColor: "aquamarine",
-//       backend: "WebAudio",
-//       barWidth: 10,
-//       normalize: false,
-//       barGap: 5,
-//       barRadius: 10,
-//       barHeight: 0.5,
-//     });
-
-//     wavesurfer.load(audioFile.url);
-
-//     // wavesurfer.once("interaction", () => {
-//     //   wavesurfer.play();
-//     // });
-
-//     // const playPause = () => {
-//     //   currentFile === e ? wavesurfer.pause() : wavesurfer.play();
-//     // };
-//     // playPause();
-
-//     return () => {
-//       wavesurfer.destroy();
-//     };
-//   }, [audioFile]);
-
-//   return (
-//     <div>
-//       <div ref={waveformRef}>
-//         <button onClick={() => clickHandle(audioFile.url)}>Click</button>
-//       </div>
-//     </div>
-//   );
-// }
 
 export default AudioWaveform;

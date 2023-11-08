@@ -59,13 +59,13 @@ const Audio = () => {
   const audioFiles = [
     {
       id: "a",
-      url: "african-moon.mp3",
+      url: "african-bliss-master.mp3",
       title: "track title 1",
       imgUrl: "https://source.unsplash.com/collection/1163637/50x50",
     },
     {
       id: "b",
-      url: "african-moon.mp3",
+      url: "african-moon-master.mp3",
       title: "track title 2",
       imgUrl: "https://source.unsplash.com/collection/1163637/50x50",
     },
@@ -83,7 +83,7 @@ const Audio = () => {
     },
     {
       id: "e",
-      url: "african-moon.mp3",
+      url: "african-moon-master.mp3",
       title: "track title 5",
       imgUrl: "https://source.unsplash.com/collection/1163637/50x50",
     },
@@ -101,7 +101,7 @@ const Audio = () => {
     },
     {
       id: "h",
-      url: "african-moon.mp3",
+      url: "african-moon-master.mp3",
       title: "track title 8",
       imgUrl: "https://source.unsplash.com/collection/1163637/50x50",
     },
@@ -113,13 +113,13 @@ const Audio = () => {
     },
     {
       id: "j",
-      url: "african-secret-master.mp3",
+      url: "african-bliss-master.mp3",
       title: "track title 10",
       imgUrl: "https://source.unsplash.com/collection/1163637/50x50",
     },
     {
       id: "k",
-      url: "african-secret-master.mp3",
+      url: "african-moon-master.mp3",
       title: "track title 11",
       imgUrl: "https://source.unsplash.com/collection/1163637/50x50",
     },
@@ -131,55 +131,29 @@ const Audio = () => {
     },
     {
       id: "m",
-      url: "african-secret-master.mp3",
+      url: "african-bliss-master.mp3",
       title: "track title 13",
       imgUrl: "https://source.unsplash.com/collection/1163637/50x50",
     },
   ];
 
   const clickHandle = (e) => {
+    console.log("clicked");
     setCurrentFile(e);
     setIsPlaying(true);
   };
+
+  console.log("before Audio render");
 
   return (
     <div className="single-page-container-with-player">
       <div className="card-title">
         <div>
-          {/* {audioFiles.map((audioFile) => (
-            <div key={audioFile.id}> */}
           <AudioWaveform audioFiles={audioFiles} clickHandle={clickHandle} />
-          {/* </div>
-          ))} */}
         </div>
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="single-page-container">
-  //     <div className="card-title">
-  //       <div>
-  //         {" "}
-  //         {audioJobs.map((job) => {
-  //           return (
-  //             <div className="card-container">
-  //               <div className="card-title">
-  //                 <h1>{job.title}</h1>
-  //                 <Player
-  //                   height={100}
-  //                   waveColor="rgb(200, 0, 200)"
-  //                   progressColor="rgb(100, 0, 100)"
-  //                   url={job.audioUrl}
-  //                 />
-  //               </div>
-  //             </div>
-  //           );
-  //         })}
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default Audio;

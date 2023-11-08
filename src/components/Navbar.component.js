@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
+  BsChevronLeft,
+  BsChevronRight,
 } from "react-icons/bs";
 
 const Navbar = () => {
@@ -28,7 +30,7 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-chevron-left" onMouseOver={goLeft}>
-        <BsFillArrowLeftCircleFill size={20} opacity={0.3} />
+        <BsChevronLeft size={20} opacity={0.3} />
       </div>
       <div className="navbar">
         <div className="navbar-scroll-anchor-left" ref={leftChevron}></div>
@@ -36,10 +38,10 @@ const Navbar = () => {
           <Link to="/writing">
             <h1 className="btn-nav">WRITING</h1>
           </Link>
-          {/* <Link to="/audio">
+          <Link to="/audio">
             {" "}
             <h1 className="btn-nav">AUDIO</h1>
-          </Link> */}
+          </Link>
           <Link to="/music">
             {" "}
             <h1 className="btn-nav">MUSIC</h1>
@@ -57,7 +59,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-scroll-anchor-right"></div>
       <div className="navbar-chevron-right" onMouseOver={goRight}>
-        <BsFillArrowRightCircleFill size={20} opacity={0.3} />
+        <BsChevronRight size={20} opacity={0.3} />
       </div>
     </div>
   );
