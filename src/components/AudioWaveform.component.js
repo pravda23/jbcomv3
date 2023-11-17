@@ -93,7 +93,7 @@ const AudioWaveform = ({ audioFiles }) => {
     <div>
       <div className="audio-list">
         <div>
-          {audioFiles.map((audioFile) => (
+          {audioFiles.music.map((audioFile) => (
             <div
               key={audioFile.id}
               onClick={() => handleAudioSelect({ audioFile })}
