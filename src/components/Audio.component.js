@@ -1,7 +1,6 @@
 import { useState } from "react";
 import AudioWaveform from "./AudioWaveform.component.js";
-import Footer from "./Footer.component.js";
-import audioFiles from "./audioFiles.json";
+import musicTracks from "./musicTracks.json";
 
 const Audio = () => {
   const [currentFile, setCurrentFile] = useState();
@@ -16,7 +15,7 @@ const Audio = () => {
     <div className="single-page-container-with-player">
       <div className="card-title">
         <div>
-          <AudioWaveform audioFiles={audioFiles} clickHandle={clickHandle} />
+          <AudioWaveform musicTracks={musicTracks} clickHandle={clickHandle} />
         </div>
       </div>
     </div>

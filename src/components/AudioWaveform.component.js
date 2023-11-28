@@ -9,14 +9,16 @@ import {
   BsVolumeMute,
 } from "react-icons/bs";
 
-const AudioWaveform = ({ audioFiles }) => {
+const AudioWaveform = ({ musicTracks }) => {
   const wavesurferRef = useRef(null);
   const wavesurferObjRef = useRef(null);
   const [currentAudio, setCurrentAudio] = useState();
   const [currentTitle, setCurrentTitle] = useState(
     "Select a track to start playing"
   );
-  const [currentImage, setCurrentImage] = useState(null);
+  const [currentImage, setCurrentImage] = useState(
+    "https://source.unsplash.com/collection/1163637/50x50"
+  );
   const [playingState, setPlayingState] = useState("notStarted");
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -63,8 +65,11 @@ const AudioWaveform = ({ audioFiles }) => {
   }, [currentAudio, currentTitle]);
 
   // sets current audio and playback state
-  const handleAudioSelect = ({ audioFile }) => {
-    if (currentAudio === audioFile.url) {
+  const handleAudioSelect = ({ musicTrack }) => {
+    if (
+      currentAudio ===
+      `https://johnbartmann.com/track/${musicTrack.url_slug}.mp3`
+    ) {
       if (playingState === "play") {
         wavesurferObjRef.current.pause();
         setIsPlaying(true);
@@ -74,9 +79,9 @@ const AudioWaveform = ({ audioFiles }) => {
       }
       return;
     }
-    setCurrentTitle(audioFile.title);
-    setCurrentAudio(audioFile.url);
-    setCurrentImage(audioFile.imgUrl);
+    setCurrentTitle(musicTrack.title);
+    setCurrentAudio(musicTrack.url_slug);
+    setCurrentImage("https://source.unsplash.com/collection/1163637/50x50");
   };
 
   const handleAudioPlayPause = () => {
@@ -89,18 +94,24 @@ const AudioWaveform = ({ audioFiles }) => {
     }
   };
 
+  musicTracks.map((t) => {
+    if (t.key == "") {
+      console.log(t.key);
+    }
+  });
+
   return (
     <div>
       <div className="audio-list">
         <div>
-          {audioFiles.music.map((audioFile) => (
+          {musicTracks.map((musicTrack) => (
             <div
-              key={audioFile.id}
-              onClick={() => handleAudioSelect({ audioFile })}
+              key={musicTrack.key}
+              onClick={() => handleAudioSelect({ musicTrack })}
             >
-              <img src={audioFile.imgUrl} />
+              <img src={currentImage} />
               &nbsp;
-              {audioFile.title}
+              {musicTrack.title}
             </div>
           ))}
         </div>

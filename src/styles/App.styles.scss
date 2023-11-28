@@ -3,6 +3,7 @@
   --color-light: hsl(27, 81%, 48%);
   --color-light-trans: hsla(0, 0%, 88%, 0.1);
   --color-dark: hsl(204, 64%, 54%);
+  --color-dark-trans: hsl(204, 56%, 27%);
   --color-highlight: hsl(27, 81%, 48%);
   --color-highlight-trans: hsla(27, 81%, 48%, 0.137);
   --black: #272727;
@@ -251,11 +252,15 @@ a:hover {
 }
 
 .card-title {
-  width: 80%;
+  width: 100%;
 }
 
-.card-title > h3 {
-  justify-content: flex-start;
+.card-title > div {
+  cursor: pointer;
+}
+
+.audio-list > div > div:hover {
+  background-color: var(--color-dark-trans);
 }
 
 .card-button {
