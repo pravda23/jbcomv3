@@ -12,7 +12,7 @@ import {
 const AudioWaveform = ({ musicTracks }) => {
   const wavesurferRef = useRef(null);
   const wavesurferObjRef = useRef(null);
-  const [currentAudio, setCurrentAudio] = useState();
+  const [currentAudio, setCurrentAudio] = useState("");
   const [currentTitle, setCurrentTitle] = useState(
     "Select a track to start playing"
   );
@@ -21,6 +21,27 @@ const AudioWaveform = ({ musicTracks }) => {
   );
   const [playingState, setPlayingState] = useState("notStarted");
   const [isPlaying, setIsPlaying] = useState(false);
+
+  // const ctx = new AudioContext();
+  // let audio;
+
+  // fetch(`https://johnbartmann.com/track/african-moon-sample.mp3`)
+  //   .then((data) => data.arrayBuffer())
+  //   .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
+  //   .then((decodedAudio) => {
+  //     audio = decodedAudio;
+  //     console.log(audio);
+  //   });
+
+  // const playback = () => {
+  //   console.log("playback");
+  //   const playSound = ctx.createBufferSource();
+  //   playSound.buffer = audio;
+  //   playSound.connect(ctx.destination);
+  //   playSound.start(ctx.currentTime);
+  // };
+
+  // console.log(playback);
 
   useEffect(() => {
     if (currentAudio === undefined) {
@@ -94,15 +115,16 @@ const AudioWaveform = ({ musicTracks }) => {
     }
   };
 
-  musicTracks.map((t) => {
-    if (t.key == "") {
-      console.log(t.key);
-    }
-  });
+  // musicTracks.map((t) => {
+  //   if (t.key == "") {
+  //     console.log(t.key);
+  //   }
+  // });
 
   return (
     <div>
       <div className="audio-list">
+        <div>{/* <button onClick={playback}>playback</button> */}</div>
         <div>
           {musicTracks.map((musicTrack) => (
             <div
