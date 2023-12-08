@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
+  BsChevronLeft,
+  BsChevronRight,
 } from "react-icons/bs";
 
 const Navbar = () => {
@@ -28,7 +30,7 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-chevron-left" onMouseOver={goLeft}>
-        <BsFillArrowLeftCircleFill size={20} opacity={0.3} />
+        <BsChevronLeft size={20} opacity={0.3} />
       </div>
       <div className="navbar">
         <div className="navbar-scroll-anchor-left" ref={leftChevron}></div>
@@ -44,31 +46,20 @@ const Navbar = () => {
             {" "}
             <h1 className="btn-nav">MUSIC</h1>
           </Link>
-          <Link to="/contact">
+
+          <Link to="/faq">
             {" "}
-            <h1 className="btn-nav">CONTACT</h1>
-          </Link>
-          <Link to="/contact">
-            {" "}
-            <h1 className="btn-nav">CONTACT</h1>
-          </Link>
-          <Link to="/contact">
-            {" "}
-            <h1 className="btn-nav">CONTACT</h1>
-          </Link>
-          <Link to="/contact">
-            {" "}
-            <h1 className="btn-nav">CONTACT</h1>
+            <h1 className="btn-nav">FAQ</h1>
           </Link>
           <Link ref={rightChevron} to="/contact">
             {" "}
-            <h1 className="btn-nav">FINAL</h1>
+            <h1 className="btn-nav">CONTACT</h1>
           </Link>
         </div>
       </div>
       <div className="navbar-scroll-anchor-right"></div>
       <div className="navbar-chevron-right" onMouseOver={goRight}>
-        <BsFillArrowRightCircleFill size={20} opacity={0.3} />
+        <BsChevronRight size={20} opacity={0.3} />
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import Card from "./Card.component";
-import { useState } from "react";
 
 const Writing = () => {
   const writingJobs = [

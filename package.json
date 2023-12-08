@@ -14,6 +14,7 @@
     "bootstrap-icons": "^1.10.5",
     "cors": "^2.8.5",
     "font-awesome": "^4.7.0",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-h5-audio-player": "^3.8.6",
@@ -21,9 +22,7 @@
     "react-player": "^2.12.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
-    "react-wavesurfer.js": "0.0.8",
     "sass": "^1.58.0",
-    "wavesurfer-react": "^2.2.3",
     "wavesurfer.js": "^7.1.5",
     "web-vitals": "^2.1.4"
   },
@@ -43,7 +42,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "defaults and supports es6-module"
     ],
     "development": [
       "last 1 chrome version",

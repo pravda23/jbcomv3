@@ -6,11 +6,10 @@ import Home from "./Home.component";
 import Navbar from "./Navbar.component";
 import Footer from "./Footer.component";
 import Audio from "./Audio.component";
-import AudioBeta from "./Audio.component";
-
 import Music from "./Music.component";
 import Writing from "./Writing.component";
 import Contact from "./Contact.component";
+import FAQ from "./FAQ.component";
 
 function App() {
   return (
@@ -47,11 +46,9 @@ function App() {
               <Route path="/audio" element={<Audio />} />
               <Route path="/music" element={<Music />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/faq" element={<FAQ />} />
             </Routes>
           </BrowserRouter>
-        </div>
-        <div className="footer">
-          <Footer />
         </div>
       </div>
     </div>

@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-
 :root {
   --white: #e6e6e6;
   --color-light: hsl(27, 81%, 48%);
   --color-light-trans: hsla(0, 0%, 88%, 0.1);
   --color-dark: hsl(204, 64%, 54%);
+  --color-dark-trans: hsl(204, 56%, 27%);
   --color-highlight: hsl(27, 81%, 48%);
   --color-highlight-trans: hsla(27, 81%, 48%, 0.137);
   --black: #272727;
@@ -18,6 +16,8 @@
 .overlay {
   min-height: 100vh;
   background-color: hsla(220, 13%, 18%, 0.8);
+  // delete below line to reset overlay opacity
+  background-color: hsla(220, 13%, 18%, 1);
   z-index: 10;
 }
 
@@ -65,9 +65,9 @@ h3 {
   font-size: 3rem;
 }
 
-.hero-title > h3 {
-  // min-height: 20vh;
-
+.hero-title > p {
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
 }
 
@@ -87,9 +87,9 @@ a:hover {
   align-items: end;
   min-height: 10vh;
   width: "100%";
-  border-bottom: 1px solid var(--white);
+
   padding: 0.1em;
-  // margin-bottom: 0.9rem;
+  margin-bottom: 0.9rem;
 }
 
 .header-title-container > h2 {
@@ -105,7 +105,7 @@ a:hover {
 }
 
 .content-container {
-  background-image: url("https://johnbartmann.com/images/headshot-corporate.jpg");
+  // background-image: url("https://johnbartmann.com/images/headshot-corporate.jpg");
   object-fit: cover;
   background-size: cover;
   background-position: top;
@@ -125,7 +125,7 @@ a:hover {
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   overflow-y: auto;
   color: white;
   background-color: var(--color-light-trans);
@@ -170,7 +170,7 @@ a:hover {
 .navbar-chevron-left {
   background-color: var(--color-light-trans);
   border-bottom: 1px solid gray;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .navbar-chevron-left:hover,
@@ -181,14 +181,14 @@ a:hover {
 .navbar-chevron-right {
   background-color: var(--color-light-trans);
   border-bottom: 1px solid gray;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .btn-nav {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   // border-bottom: 1px solid var(--color-dark);
   color: var(--color-dark);
-  padding: 0.3rem;
+  // padding: 0.3rem;
   margin: 0.5rem;
 }
 
@@ -199,6 +199,18 @@ a:hover {
 .single-page-container {
   animation-name: fadeIn;
   animation-duration: 300ms;
+}
+
+.single-page-container-with-player {
+  animation-name: fadeIn;
+  animation-duration: 300ms;
+  max-height: 60vh;
+  border: 1px solid var(--color-light-trans);
+  border-radius: 5px;
+  padding: 0.2rem;
+  // overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
 }
 
 .player-icon {
@@ -213,9 +225,6 @@ a:hover {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   justify-items: center;
-  // flex-direction: row;
-  // justify-content: space-around;
-  // border: 1px solid red;
 }
 
 .gallery-item-container {
@@ -223,7 +232,6 @@ a:hover {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  // border: 1px solid blue;
 }
 
 .card-container {
@@ -244,20 +252,19 @@ a:hover {
 }
 
 .card-title {
-  width: 80%;
+  width: 100%;
 }
 
-.card-title > h3 {
-  justify-content: flex-start;
+.card-title > div {
+  cursor: pointer;
+}
+
+.audio-list > div > div:hover {
+  background-color: var(--color-dark-trans);
 }
 
 .card-button {
   width: 20%;
-}
-
-#waveform {
-  width: 100%;
-  border: 3px solid red;
 }
 
 .footer {
@@ -307,12 +314,69 @@ a:hover {
   color: var(--color-dark);
 }
 
-audio {
-  // filter: invert(100%);
-  filter: sepia(80%) saturate(30%) grayscale(1) contrast(99%) invert(80%);
-  // width: 200px;
-  // height: 25px;
-  padding-top: 1rem;
+.music-profiles {
+  position: fixed;
+  bottom: 0;
+  height: 15%;
+  // padding: 1rem;
+}
+
+.audio-player {
+  position: fixed;
+  background-color: red;
+  bottom: 0;
+  height: 15%;
+  padding: 0.5rem;
+}
+
+.audio-list > div > div {
+  padding: 0.1rem;
+}
+
+.wavesurfer-container {
+  position: absolute;
+  display: flex;
+  left: 0;
+  bottom: 0;
+  height: 10%;
+  max-height: 15vh;
+  width: 100vw;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  border: 1px solid var(--color-light-trans);
+}
+.wavesurfer-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wavesurfer-img-overlay {
+  font-family: "Bootstrap-icons";
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  color: white;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.wavesurfer-img-overlay:hover {
+  scale: 1.1;
+}
+
+// .wavesurfer-img-overlay {
+//   border: 3px solid var(--color-dark);
+// }
+
+.wavesurfer-waveform {
+  width: 100%;
+  padding-left: 0.5rem;
 }
 
 @media (min-width: 600px) {
