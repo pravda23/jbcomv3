@@ -35,22 +35,25 @@ const Navbar = () => {
       <div className="navbar">
         <div className="navbar-scroll-anchor-left" ref={leftChevron}></div>
         <div className="navbar-links-container">
-          <Link to="/writing">
-            <h1 className="btn-nav">WRITING</h1>
+          <Link to="/story">
+            <h1 className="btn-nav">STORY</h1>
           </Link>
-          <Link to="/audio">
+          <Link to="/work">
+            <h1 className="btn-nav">WORK</h1>
+          </Link>
+          {/* <Link to="/audio">
             {" "}
             <h1 className="btn-nav">AUDIO</h1>
           </Link>
           <Link to="/music">
             {" "}
             <h1 className="btn-nav">MUSIC</h1>
-          </Link>
+          </Link> */}
 
-          <Link to="/faq">
+          {/* <Link to="/faq">
             {" "}
             <h1 className="btn-nav">FAQ</h1>
-          </Link>
+          </Link> */}
           <Link ref={rightChevron} to="/contact">
             {" "}
             <h1 className="btn-nav">CONTACT</h1>

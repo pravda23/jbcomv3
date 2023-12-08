@@ -1,11 +1,11 @@
 :root {
   --white: #e6e6e6;
-  --color-light: hsl(27, 81%, 48%);
+  --color-light: hsl(290, 96%, 61%);
   --color-light-trans: hsla(0, 0%, 88%, 0.1);
   --color-dark: hsl(204, 64%, 54%);
   --color-dark-trans: hsl(204, 56%, 27%);
-  --color-highlight: hsl(27, 81%, 48%);
-  --color-highlight-trans: hsla(27, 81%, 48%, 0.137);
+  --color-highlight: hsl(290, 96%, 61%);
+  --color-highlight-trans: hsl(290, 22%, 20%);
   --black: #272727;
 }
 
@@ -21,12 +21,23 @@
   z-index: 10;
 }
 
+.link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
 .app-container {
   text-align: left;
   min-height: 89vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  letter-spacing: 0.05rem;
+
   font-family: "Oswald", "Helvetica Neue", Helvetica, Arial;
   font-size: calc(15px + 2vmin);
   color: var(--white);
@@ -85,15 +96,22 @@ a:hover {
   // flex-direction: column;
   justify-content: space-between;
   align-items: end;
-  min-height: 10vh;
+  min-height: 6vh;
   width: "100%";
 
   padding: 0.1em;
   margin-bottom: 0.9rem;
 }
 
-.header-title-container > h2 {
+.header-title-container > h1 {
   margin: 0;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.header-title-container > h1 > a {
+  text-decoration: none;
+  color: var(--white);
 }
 
 .header-contact-container {
@@ -105,7 +123,7 @@ a:hover {
 }
 
 .content-container {
-  // background-image: url("https://johnbartmann.com/images/headshot-corporate.jpg");
+  background-image: url("https://johnbartmann.com/images/headshot-corporate.jpg");
   object-fit: cover;
   background-size: cover;
   background-position: top;
@@ -129,10 +147,12 @@ a:hover {
   overflow-y: auto;
   color: white;
   background-color: var(--color-light-trans);
+  border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   width: 100%;
   padding: 0rem;
   scroll-behavior: smooth;
+
   // scrollbar: none;
 }
 
@@ -165,12 +185,17 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   padding: 0 0.2rem 0 0.2rem;
+  border-top: 1px solid gray;
+
+  border-bottom: 1px solid gray;
 }
 
 .navbar-chevron-left {
   background-color: var(--color-light-trans);
-  border-bottom: 1px solid gray;
+  // border-bottom: 1px solid gray;
   margin-bottom: 1rem;
+  border-radius: 20% 0 0 20%;
+  border-left: 1px solid gray;
 }
 
 .navbar-chevron-left:hover,
@@ -180,8 +205,10 @@ a:hover {
 
 .navbar-chevron-right {
   background-color: var(--color-light-trans);
-  border-bottom: 1px solid gray;
+  // border-bottom: 1px solid gray;
   margin-bottom: 1rem;
+  border-right: 1px solid gray;
+  border-radius: 0 20% 20% 0;
 }
 
 .btn-nav {
@@ -199,6 +226,13 @@ a:hover {
 .single-page-container {
   animation-name: fadeIn;
   animation-duration: 300ms;
+}
+
+.single-page-container > h1,
+.single-page-container > h3 {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.2rem 0;
 }
 
 .single-page-container-with-player {
@@ -236,8 +270,8 @@ a:hover {
 
 .card-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  // justify-content: space-between;
+  // align-items: flex-start;
   border: 1px solid gray;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -252,11 +286,18 @@ a:hover {
 }
 
 .card-title {
+  align-items: flex-start;
   width: 100%;
 }
 
 .card-title > div {
   cursor: pointer;
+}
+
+.card-title > h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .audio-list > div > div:hover {
@@ -312,13 +353,6 @@ a:hover {
 
 .cta-btn > a:hover {
   color: var(--color-dark);
-}
-
-.music-profiles {
-  position: fixed;
-  bottom: 0;
-  height: 15%;
-  // padding: 1rem;
 }
 
 .audio-player {

@@ -2,6 +2,8 @@ import { GoLinkExternal } from "react-icons/go";
 import ReactPlayer from "react-player";
 
 const Card = (title, item, link, audioUrl, ytUrl) => {
+  const clickHandler = (e) => {};
+
   return (
     <div>
       <div className="card-container">

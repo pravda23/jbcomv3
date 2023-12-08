@@ -6,21 +6,14 @@ import MusicProfiles from "./MusicProfiles.component";
 import Card from "./Card.component";
 
 const Music = () => {
-  const musicTracks = [
-    {
-      id: "a",
-      url: "african-bliss-master.mp3",
-    },
-    {
-      id: "b",
-      url: "african-moon.mp3",
-    },
-    {
-      id: "c",
-      url: "african-secret-master.mp3",
-    },
-  ];
-
-  return <MusicProfiles />;
+  return (
+    <div className="single-page-container">
+      <h1>MUSIC</h1>
+      <h3>Follow the links to listen to music from my various profiles.</h3>
+      <MusicProfiles />
+      <br />
+      <h3>Interactive music player coming soon!</h3>
+    </div>
+  );
 };
 export default Music;

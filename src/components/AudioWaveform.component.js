@@ -12,7 +12,9 @@ import {
 const AudioWaveform = ({ musicTracks }) => {
   const wavesurferRef = useRef(null);
   const wavesurferObjRef = useRef(null);
-  const [currentAudio, setCurrentAudio] = useState("");
+  const [currentAudio, setCurrentAudio] = useState(
+    "https://johnbartmann.com/track/african-moon-sample.mp3"
+  );
   const [currentTitle, setCurrentTitle] = useState(
     "Select a track to start playing"
   );

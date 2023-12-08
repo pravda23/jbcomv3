@@ -1,10 +1,11 @@
 :root {
   --white: #e6e6e6;
-  --color-light: hsl(27, 81%, 48%);
+  --color-light: hsl(290, 96%, 61%);
   --color-light-trans: hsla(0, 0%, 88%, 0.1);
   --color-dark: hsl(204, 64%, 54%);
-  --color-highlight: hsl(27, 81%, 48%);
-  --color-highlight-trans: hsla(27, 81%, 48%, 0.137);
+  --color-dark-trans: hsl(204, 56%, 27%);
+  --color-highlight: hsl(290, 96%, 61%);
+  --color-highlight-trans: hsl(290, 22%, 20%);
   --black: #272727;
 }
 
@@ -15,7 +16,17 @@
 .overlay {
   min-height: 100vh;
   background-color: hsla(220, 13%, 18%, 0.8);
+  background-color: hsl(220, 13%, 18%);
   z-index: 10;
+}
+
+.link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .app-container {
@@ -24,6 +35,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  letter-spacing: 0.05rem;
   font-family: "Oswald", "Helvetica Neue", Helvetica, Arial;
   font-size: calc(15px + 2vmin);
   color: var(--white);
@@ -78,14 +90,21 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  min-height: 10vh;
+  min-height: 6vh;
   width: "100%";
-  border-bottom: 1px solid var(--white);
   padding: 0.1em;
+  margin-bottom: 0.9rem;
 }
 
-.header-title-container > h2 {
+.header-title-container > h1 {
   margin: 0;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.header-title-container > h1 > a {
+  text-decoration: none;
+  color: var(--white);
 }
 
 .header-contact-container {
@@ -117,10 +136,11 @@ a:hover {
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   overflow-y: auto;
   color: white;
   background-color: var(--color-light-trans);
+  border-top: 1px solid gray;
   border-bottom: 1px solid gray;
   width: 100%;
   padding: 0rem;
@@ -157,12 +177,15 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   padding: 0 0.2rem 0 0.2rem;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .navbar-chevron-left {
   background-color: var(--color-light-trans);
-  border-bottom: 1px solid gray;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 20% 0 0 20%;
+  border-left: 1px solid gray;
 }
 
 .navbar-chevron-left:hover,
@@ -172,14 +195,14 @@ a:hover {
 
 .navbar-chevron-right {
   background-color: var(--color-light-trans);
-  border-bottom: 1px solid gray;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  border-right: 1px solid gray;
+  border-radius: 0 20% 20% 0;
 }
 
 .btn-nav {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--color-dark);
-  padding: 0.3rem;
   margin: 0.5rem;
 }
 
@@ -190,6 +213,24 @@ a:hover {
 .single-page-container {
   animation-name: fadeIn;
   animation-duration: 300ms;
+}
+
+.single-page-container > h1,
+.single-page-container > h3 {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.2rem 0;
+}
+
+.single-page-container-with-player {
+  animation-name: fadeIn;
+  animation-duration: 300ms;
+  max-height: 60vh;
+  border: 1px solid var(--color-light-trans);
+  border-radius: 5px;
+  padding: 0.2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
 }
 
 .player-icon {
@@ -215,8 +256,6 @@ a:hover {
 
 .card-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   border: 1px solid gray;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -231,20 +270,26 @@ a:hover {
 }
 
 .card-title {
-  width: 80%;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.card-title > div {
+  cursor: pointer;
 }
 
 .card-title > h3 {
-  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.audio-list > div > div:hover {
+  background-color: var(--color-dark-trans);
 }
 
 .card-button {
   width: 20%;
-}
-
-#waveform {
-  width: 100%;
-  border: 3px solid red;
 }
 
 .footer {
@@ -293,9 +338,59 @@ a:hover {
   color: var(--color-dark);
 }
 
-audio {
-  filter: sepia(80%) saturate(30%) grayscale(1) contrast(99%) invert(80%);
-  padding-top: 1rem;
+.audio-player {
+  position: fixed;
+  background-color: red;
+  bottom: 0;
+  height: 15%;
+  padding: 0.5rem;
+}
+
+.audio-list > div > div {
+  padding: 0.1rem;
+}
+
+.wavesurfer-container {
+  position: absolute;
+  display: flex;
+  left: 0;
+  bottom: 0;
+  height: 10%;
+  max-height: 15vh;
+  width: 100vw;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  border: 1px solid var(--color-light-trans);
+}
+
+.wavesurfer-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wavesurfer-img-overlay {
+  font-family: "Bootstrap-icons";
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  color: white;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.wavesurfer-img-overlay:hover {
+  scale: 1.1;
+}
+
+.wavesurfer-waveform {
+  width: 100%;
+  padding-left: 0.5rem;
 }
 
 @media (min-width: 600px) {

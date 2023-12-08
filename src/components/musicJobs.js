@@ -1,73 +1,54 @@
-import React from "react";
+const musicJobs = [
+  {
+    title: "Film & TV music",
+    description: "Contributing composer: Leon Schuster 'Frank and Fearless",
+    link: "https://youtu.be/_8slPqV-16w",
+    ytUrl:
+      "https://www.youtube.com/watch?v=pkmWkcH_7Qc&list=PLuqUikzY1o5XWKR-oattHw_Atq9FLOhm1",
+  },
+  {
+    title: "Jingle & theme music",
+    description: "Composer: Mēmotiv",
+    link: "https://www.linkedin.com/company/memotiv/",
+    audioUrl: "https://johnbartmann.com/site-audio-smp/spdwrk-jingle-02.wav",
+  },
+  {
+    title: "Commercial electro-jazz",
+    description: "Composition/production: 'Night And Day' by Pravda",
+    link: "http://pravdaofficial.com/music/",
+    ytUrl: "https://www.youtube.com/watch?v=lOygAQEQ5To",
+  },
+  // {
+  //   title: "Commercial electro-jazz",
+  //   description: "Composition/production: 'Wooden Wendy' by Pravda",
+  //   link: "http://pravdaofficial.com/music/",
+  //   ytUrl: "https://www.youtube.com/watch?v=mX1SgwsDNS8",
+  // },
+  {
+    title: "Creative Commons music",
+    description: "Royalty-free music for YouTube and games",
+    link: "http://youtube.com/johnbartmannmusic/",
+    ytUrl:
+      "https://www.youtube.com/watch?v=pkmWkcH_7Qc&list=PLuqUikzY1o5XWKR-oattHw_Atq9FLOhm1",
+  },
+  {
+    title: "90s sitcom parody music",
+    description: "Custom retro music for brands and channels",
+    link: "https://youtu.be/1DAoz6e3JG8",
+    ytUrl: "https://youtu.be/1DAoz6e3JG8",
+  },
+  {
+    title: "Themed library music",
+    description: "Composition/production: DNA Muzik / Minds and Music",
+    link: "https://dnamusik.sourceaudio.com/album/3646849",
+    audioUrl: "https://johnbartmann.com/site-audio-smp/just-trolling-along.mp3",
+  },
+];
 
-export const Music = () => {
-  const musicJobs = [
-    {
-      title: "Film & TV music",
-      description: "Contributing composer: Leon Schuster 'Frank and Fearless",
-      link: "https://youtu.be/_8slPqV-16w",
-      ytUrl:
-        "https://www.youtube.com/watch?v=pkmWkcH_7Qc&list=PLuqUikzY1o5XWKR-oattHw_Atq9FLOhm1",
-    },
-    {
-      title: "Jingle & theme music",
-      description: "Composer: Mēmotiv",
-      link: "https://www.linkedin.com/company/memotiv/",
-      audioUrl: "https://johnbartmann.com/site-audio-smp/spdwrk-jingle-02.wav",
-    },
-    {
-      title: "Commercial electro-jazz",
-      description: "Composition/production: 'Night And Day' by Pravda",
-      link: "http://pravdaofficial.com/music/",
-      ytUrl: "https://www.youtube.com/watch?v=lOygAQEQ5To",
-    },
-    // {
-    //   title: "Commercial electro-jazz",
-    //   description: "Composition/production: 'Wooden Wendy' by Pravda",
-    //   link: "http://pravdaofficial.com/music/",
-    //   ytUrl: "https://www.youtube.com/watch?v=mX1SgwsDNS8",
-    // },
-    {
-      title: "Creative Commons music",
-      description: "Royalty-free music for YouTube and games",
-      link: "http://youtube.com/johnbartmannmusic/",
-      ytUrl:
-        "https://www.youtube.com/watch?v=pkmWkcH_7Qc&list=PLuqUikzY1o5XWKR-oattHw_Atq9FLOhm1",
-    },
-    {
-      title: "90s sitcom parody music",
-      description: "Custom retro music for brands and channels",
-      link: "https://youtu.be/1DAoz6e3JG8",
-      ytUrl: "https://youtu.be/1DAoz6e3JG8",
-    },
-    {
-      title: "Themed library music",
-      description: "Composition/production: DNA Muzik / Minds and Music",
-      link: "https://dnamusik.sourceaudio.com/album/3646849",
-      audioUrl:
-        "https://johnbartmann.com/site-audio-smp/just-trolling-along.mp3",
-    },
-  ];
-
-  const musicTracks = [
-    {
-      id: "a",
-      url: "african-bliss-master.mp3",
-    },
-    {
-      id: "b",
-      url: "african-moon.mp3",
-    },
-    {
-      id: "c",
-      url: "african-secret-master.mp3",
-    },
-  ];
-
-  return (
-    <div className="single-page-container">
-      <h1>MUSIC</h1>
-      {/*
+return (
+  <div className="single-page-container">
+    <h1>MUSIC</h1>
+    {/*
             {musicJobs.map((job) => {
               return Card(
                 job.title,
@@ -198,49 +179,5 @@ export const Music = () => {
                 The Dukes of Note - carnival rock
               </a>
             </h4> */}
-
-      <h3>Music profiles</h3>
-      <h4>
-        <a href="https://youtube.com/c/johnbartmannmusic" target="_blank">
-          YouTube
-        </a>{" "}
-        •{" "}
-        <a
-          href="https://open.spotify.com/artist/3ZkQ69zxOePFLOGLj0N15C"
-          target="_blank"
-        >
-          Spotify
-        </a>{" "}
-        •{" "}
-        <a
-          href="https://freemusicarchive.org/music/John_Bartmann/"
-          target="_blank"
-        >
-          Free Music Archive
-        </a>{" "}
-        •{" "}
-        <a
-          href="https://music.apple.com/us/artist/john-bartmann/1081298778"
-          target="_blank"
-        >
-          Apple Music
-        </a>{" "}
-        •{" "}
-        <a
-          href="https://music.amazon.com/artists/B071YYY529/john-bartmann"
-          target="_blank"
-        >
-          Amazon Music
-        </a>{" "}
-        •{" "}
-        <a href="https://johnbartmann.bandcamp.com" target="_blank">
-          Bandcamp
-        </a>{" "}
-        •{" "}
-        <a href="https://soundcloud.com/johnbartmannmusic/" target="_blank">
-          Soundcloud
-        </a>
-      </h4>
-    </div>
-  );
-};
+  </div>
+);
