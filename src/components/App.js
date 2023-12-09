@@ -7,7 +7,8 @@ import Navbar from "./Navbar.component";
 import Footer from "./Footer.component";
 import Audio from "./Audio.component";
 import Music from "./Music.component";
-import Writing from "./Writing.component";
+import Work from "./Work.component";
+import Story from "./Story.component";
 import Contact from "./Contact.component";
 import FAQ from "./FAQ.component";
 
@@ -21,7 +22,6 @@ function App() {
               <h1>
                 <a href="/">JOHN BARTMANN</a>
               </h1>
-              <h2>CONTENT // CREATIVE</h2>
             </div>
             <div className="header-contact-container">
               <a href="mailto:hi@johnbartmann.com" target="_blank">
@@ -42,11 +42,12 @@ function App() {
             <Navbar />
             <Routes>
               <Route index element={<Home />} />
-              <Route path="/writing" element={<Writing />} />
+              <Route path="/story" element={<Story />} />
+              <Route path="/work" element={<Work />} />
               <Route path="/audio" element={<Audio />} />
               <Route path="/music" element={<Music />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/faq" element={<FAQ />} />
+              {/* <Route path="/faq" element={<FAQ />} /> */}
             </Routes>
           </BrowserRouter>
         </div>
