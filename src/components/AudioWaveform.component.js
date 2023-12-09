@@ -22,32 +22,12 @@ const AudioWaveform = ({ musicTracks }) => {
   const [playingState, setPlayingState] = useState("notStarted");
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // const ctx = new AudioContext();
-  // let audio;
-
-  // fetch(`https://johnbartmann.com/track/african-moon-sample.mp3`)
-  //   .then((data) => data.arrayBuffer())
-  //   .then((arrayBuffer) => ctx.decodeAudioData(arrayBuffer))
-  //   .then((decodedAudio) => {
-  //     audio = decodedAudio;
-  //     console.log(audio);
-  //   });
-
-  // const playback = () => {
-  //   console.log("playback");
-  //   const playSound = ctx.createBufferSource();
-  //   playSound.buffer = audio;
-  //   playSound.connect(ctx.destination);
-  //   playSound.start(ctx.currentTime);
-  // };
-
-  // console.log(playback);
-
   useEffect(() => {
     if (currentAudio === undefined) {
       return;
     }
 
+    console.log(currentAudio);
     const wavesurfer = WaveSurfer.create({
       container: wavesurferRef.current,
       waveColor: "white",
@@ -101,7 +81,9 @@ const AudioWaveform = ({ musicTracks }) => {
       return;
     }
     setCurrentTitle(musicTrack.title);
-    setCurrentAudio(musicTrack.url_slug);
+    setCurrentAudio(
+      `https://johnbartmann.com/track/${musicTrack.url_slug}-sample.mp3`
+    );
     setCurrentImage("https://source.unsplash.com/collection/1163637/50x50");
   };
 
@@ -115,16 +97,10 @@ const AudioWaveform = ({ musicTracks }) => {
     }
   };
 
-  // musicTracks.map((t) => {
-  //   if (t.key == "") {
-  //     console.log(t.key);
-  //   }
-  // });
-
   return (
     <div>
       <div className="audio-list">
-        <div>{/* <button onClick={playback}>playback</button> */}</div>
+        <div></div>
         <div>
           {musicTracks.map((musicTrack) => (
             <div
