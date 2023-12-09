@@ -12,9 +12,7 @@ import {
 const AudioWaveform = ({ musicTracks }) => {
   const wavesurferRef = useRef(null);
   const wavesurferObjRef = useRef(null);
-  const [currentAudio, setCurrentAudio] = useState(
-    "https://johnbartmann.com/track/african-moon-sample.mp3"
-  );
+  const [currentAudio, setCurrentAudio] = useState("");
   const [currentTitle, setCurrentTitle] = useState(
     "Select a track to start playing"
   );
@@ -101,21 +99,27 @@ const AudioWaveform = ({ musicTracks }) => {
 
   return (
     <div>
-      <div className="audio-list">
-        <div></div>
-        <div>
-          {musicTracks.map((musicTrack) => (
+      <h1>MUSIC</h1>
+      <h3>Original Creative Commons music for videos and games.</h3>
+      <br />
+      {musicTracks.map((musicTrack) => (
+        <>
+          <div>
             <div
+              className="audio-list"
               key={musicTrack.key}
               onClick={() => handleAudioSelect({ musicTrack })}
             >
               <img src={currentImage} />
               &nbsp;
-              {musicTrack.title}
+              <div className="audio-list-title">{musicTrack.title}</div>
+              <a href={musicTrack.url_gum} target="_blank">
+                GET
+              </a>
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </>
+      ))}
       <div className="wavesurfer-container">
         <div className="wavesurfer-img">
           <div

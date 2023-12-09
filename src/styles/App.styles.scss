@@ -41,7 +41,7 @@
   font-family: "Oswald", "Helvetica Neue", Helvetica, Arial;
   font-size: calc(15px + 2vmin);
   color: var(--white);
-  padding: 1rem;
+  padding: 2rem;
   overflow: hidden;
 }
 
@@ -300,8 +300,8 @@ a:hover {
   align-items: flex-start;
 }
 
-.audio-list > div > div:hover {
-  background-color: var(--color-dark-trans);
+.audio-list > div:hover {
+  background-color: var(--color-highlight-trans);
 }
 
 .card-button {
@@ -360,11 +360,27 @@ a:hover {
   background-color: red;
   bottom: 0;
   height: 15%;
-  padding: 0.5rem;
+  padding: 2rem;
+}
+
+.audio-list {
+  display: flex;
+  // flex-direction: column;
+  justify-content: space-between;
 }
 
 .audio-list > div > div {
   padding: 0.1rem;
+}
+
+.audio-list-item {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+}
+
+.audio-list-title {
+  width: 80%;
 }
 
 .wavesurfer-container {
