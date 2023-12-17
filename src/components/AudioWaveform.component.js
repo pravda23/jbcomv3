@@ -7,12 +7,16 @@ import {
   BsFillPauseCircleFill,
   BsVolumeDown,
   BsVolumeMute,
+  BsDownload,
+  BsYoutube,
 } from "react-icons/bs";
+
+import { AiOutlineYoutube } from "react-icons/ai";
 
 const AudioWaveform = ({ musicTracks }) => {
   const wavesurferRef = useRef(null);
   const wavesurferObjRef = useRef(null);
-  const [currentAudio, setCurrentAudio] = useState("");
+  const [currentAudio, setCurrentAudio] = useState();
   const [currentTitle, setCurrentTitle] = useState(
     "Select a track to start playing"
   );
@@ -27,7 +31,6 @@ const AudioWaveform = ({ musicTracks }) => {
       return;
     }
 
-    console.log(currentAudio);
     const wavesurfer = WaveSurfer.create({
       container: wavesurferRef.current,
       waveColor: "white",
@@ -103,22 +106,23 @@ const AudioWaveform = ({ musicTracks }) => {
       <h3>Original Creative Commons music for videos and games.</h3>
       <br />
       {musicTracks.map((musicTrack) => (
-        <>
-          <div>
-            <div
-              className="audio-list"
-              key={musicTrack.key}
-              onClick={() => handleAudioSelect({ musicTrack })}
-            >
-              <img src={currentImage} />
-              &nbsp;
-              <div className="audio-list-title">{musicTrack.title}</div>
-              <a href={musicTrack.url_gum} target="_blank">
-                GET
-              </a>
-            </div>
+        <div className="audio-list-container" key={musicTrack.key}>
+          <div
+            className="audio-list"
+            onClick={() => handleAudioSelect({ musicTrack })}
+          >
+            <img src={currentImage} />
+            &nbsp;
+            <div className="audio-list-title">{musicTrack.title}</div>
           </div>
-        </>
+          <a href={musicTrack.url_gum} target="_blank">
+            <BsDownload style={{ fontSize: 18 }} />
+          </a>
+          &nbsp;
+          <a href={musicTrack.url_yt} target="_blank">
+            <AiOutlineYoutube />
+          </a>
+        </div>
       ))}
       <div className="wavesurfer-container">
         <div className="wavesurfer-img">
@@ -129,11 +133,7 @@ const AudioWaveform = ({ musicTracks }) => {
               backgroundImage: `url(${currentImage})`,
             }}
           >
-            {!isPlaying ? (
-              <BsFillPlayFill style={{ zIndex: 2 }} />
-            ) : (
-              <BsFillPauseFill style={{ zIndex: 2 }} />
-            )}
+            {!isPlaying ? <BsFillPlayFill /> : <BsFillPauseFill />}
           </div>
         </div>
         <div className="wavesurfer-waveform">

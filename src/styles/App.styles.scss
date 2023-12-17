@@ -290,7 +290,7 @@ a:hover {
   width: 100%;
 }
 
-.card-title > div {
+.audio-list > div {
   cursor: pointer;
 }
 
@@ -300,8 +300,27 @@ a:hover {
   align-items: flex-start;
 }
 
-.audio-list > div:hover {
-  background-color: var(--color-highlight-trans);
+.audio-list-container {
+  display: flex;
+  color: var(--color-white);
+  align-items: justify-content;
+}
+
+.audio-list-container > a {
+  color: var(--white);
+}
+
+.audio-list-container > a:hover {
+  color: var(--color-light);
+}
+
+.audio-list {
+  width: 90%;
+}
+
+.audio-list:hover {
+  color: var(--color-highlight);
+  // background-color: var(--color-light-trans);
 }
 
 .card-button {
@@ -367,10 +386,18 @@ a:hover {
   display: flex;
   // flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
 }
 
 .audio-list > div > div {
   padding: 0.1rem;
+}
+
+.audio-list > img {
+  width: 35px;
+  height: 35px;
+  margin: 0.2rem;
 }
 
 .audio-list-item {
