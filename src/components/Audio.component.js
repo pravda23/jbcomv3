@@ -13,6 +13,9 @@ const Audio = () => {
 
   return (
     <div className="single-page-container-with-player">
+      <h1>MUSIC</h1>
+      <h3>Original Creative Commons music for videos and games.</h3>
+      <br />
       <div className="card-title">
         <div>
           <AudioWaveform musicTracks={musicTracks} clickHandle={clickHandle} />

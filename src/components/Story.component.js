@@ -7,19 +7,20 @@ const Story = () => {
         Hey. <br />
         <br />
         I'm a father and creative person with an unusually broad career spanning
-        publishing, technology and event management. <br />
-        <br />I believe that with knowledge comes the responsibility to teach
-        yourself whatever you're here to learn.
+        web publishing, technology and event management. <br />
+        <br />I gravitate towards companies that provide opportunities for
+        upskilling. I hope to remain curious and passionate in my choice of
+        work.
+        <br />
+        <br />I believe that knowledge acquisition comes bundled with the
+        responsibility to teach others.
         <br />
         <br />
         I follow Stoic philosophy and escape to the quiet of open spaces.
         <br />
         <br />
-        My music has been heard by millions.
-        <br />
-        <br />I gravitate towards companies that provide opportunities for
-        upskilling. I hope to always remain curious, passionate and optimistic
-        in overcoming life's challenges.
+        My music is freely available to fellow creators, and is enjoyed by
+        millions.
         <br />
         <br />
         Thanks for stopping by 🙂

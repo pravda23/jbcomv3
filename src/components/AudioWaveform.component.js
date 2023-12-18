@@ -100,11 +100,24 @@ const AudioWaveform = ({ musicTracks }) => {
     }
   };
 
+  let selectedTrack;
+
+  const selectRandom = ({ musicTracks }) => {
+    let arr = [];
+    musicTracks.map((i) => arr.push(i.key));
+    let selectedInteger = Math.floor(Math.random() * arr.length);
+    selectedTrack = musicTracks[selectedInteger];
+    console.log(selectedTrack.url_slug);
+    setCurrentAudio(
+      `https://johnbartmann.com/track/${selectedTrack.url_slug}-sample.mp3`
+    );
+    setCurrentTitle(selectedTrack.title);
+  };
+
   return (
     <div>
-      <h1>MUSIC</h1>
-      <h3>Original Creative Commons music for videos and games.</h3>
-      <br />
+      <button onClick={() => selectRandom({ musicTracks })}>Click</button>
+
       {musicTracks.map((musicTrack) => (
         <div className="audio-list-container" key={musicTrack.key}>
           <div

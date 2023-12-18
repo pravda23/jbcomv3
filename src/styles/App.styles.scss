@@ -229,10 +229,11 @@ a:hover {
 }
 
 .single-page-container > h1,
-.single-page-container > h3 {
+.single-page-container > h3,
+.single-page-container-with-player > h1 {
   display: flex;
   justify-content: center;
-  margin: 0 0 1.2rem 0;
+  margin: 0 0 0.8rem 0;
 }
 
 .single-page-container-with-player {
@@ -283,6 +284,15 @@ a:hover {
 .card-container:hover {
   border-left: 0.5rem solid var(--color-highlight);
   background-color: var(--color-highlight-trans);
+  cursor: pointer;
+}
+
+.card-container > a {
+  color: var(--white);
+}
+
+.card-container > a:hover {
+  color: var(--white);
 }
 
 .card-title {
@@ -401,9 +411,7 @@ a:hover {
 }
 
 .audio-list-item {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
+  border: 1px solid red;
 }
 
 .audio-list-title {
