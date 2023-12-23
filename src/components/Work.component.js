@@ -71,7 +71,7 @@ const Work = () => {
     {
       title: "Alibi",
       description: "Podcast script editing",
-      link: "https://www.volume.africa/alibi",
+      link: "https://www.volumepodcasts.com/portfolio/alibi-laduma-high",
       id: 11,
     },
     {

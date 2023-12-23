@@ -21,7 +21,7 @@ const AudioWaveform = ({ musicTracks }) => {
     "Select a track to start playing"
   );
   const [currentImage, setCurrentImage] = useState(
-    "https://source.unsplash.com/collection/1163637/50x50"
+    "https://source.unsplash.com/collection/1163637/35x35"
   );
   const [playingState, setPlayingState] = useState("notStarted");
   const [isPlaying, setIsPlaying] = useState(false);
@@ -105,8 +105,7 @@ const AudioWaveform = ({ musicTracks }) => {
   const selectRandom = ({ musicTracks }) => {
     let arr = [];
     musicTracks.map((i) => arr.push(i.key));
-    let selectedInteger = Math.floor(Math.random() * arr.length);
-    selectedTrack = musicTracks[selectedInteger];
+    selectedTrack = musicTracks[Math.floor(Math.random() * arr.length)];
     console.log(selectedTrack.url_slug);
     setCurrentAudio(
       `https://johnbartmann.com/track/${selectedTrack.url_slug}-sample.mp3`
@@ -116,12 +115,13 @@ const AudioWaveform = ({ musicTracks }) => {
 
   return (
     <div>
-      <button onClick={() => selectRandom({ musicTracks })}>Click</button>
-
       {musicTracks.map((musicTrack) => (
-        <div className="audio-list-container" key={musicTrack.key}>
+        <div
+          className="audio-list-item-container no-overflow"
+          key={musicTrack.key}
+        >
           <div
-            className="audio-list"
+            className="audio-list-item"
             onClick={() => handleAudioSelect({ musicTrack })}
           >
             <img src={currentImage} />
@@ -129,7 +129,7 @@ const AudioWaveform = ({ musicTracks }) => {
             <div className="audio-list-title">{musicTrack.title}</div>
           </div>
           <a href={musicTrack.url_gum} target="_blank">
-            <BsDownload style={{ fontSize: 18 }} />
+            <BsDownload style={{ fontSize: 18, marginBottom: 3 }} />
           </a>
           &nbsp;
           <a href={musicTrack.url_yt} target="_blank">
@@ -151,6 +151,9 @@ const AudioWaveform = ({ musicTracks }) => {
         </div>
         <div className="wavesurfer-waveform">
           <div ref={wavesurferRef}>{currentTitle}</div>
+        </div>
+        <div className="random-track-button">
+          <button onClick={() => selectRandom({ musicTracks })}>Click</button>
         </div>
       </div>
     </div>
