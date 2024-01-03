@@ -1,25 +1,18 @@
-import { useState } from "react";
-import AudioWaveform from "./AudioWaveform.component.js";
-import musicTracks from "./musicTracks.json";
+import React from "react";
+import ReactPlayer from "react-player";
+import "react-h5-audio-player/src/styles.scss";
 
-const Audio = () => {
-  const [currentFile, setCurrentFile] = useState();
-  const [isPlaying, setIsPlaying] = useState(false);
+import MusicProfiles from "./MusicProfiles.component";
 
-  const clickHandle = (e) => {
-    setCurrentFile(e);
-    setIsPlaying(true);
-  };
-
+const Music = () => {
   return (
-    <div className="single-page-container-with-player">
-      <div className="card-title">
-        <div>
-          <AudioWaveform musicTracks={musicTracks} clickHandle={clickHandle} />
-        </div>
-      </div>
+    <div className="single-page-container">
+      <h1>MUSIC</h1>
+      <h3>Follow the links to listen to music from my various profiles.</h3>
+      <MusicProfiles />
+      <br />
+      <h3>Interactive music player coming soon!</h3>
     </div>
   );
 };
-
-export default Audio;
+export default Music;

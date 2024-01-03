@@ -3,32 +3,28 @@ const Story = () => {
     <div className="single-page-container">
       <h1>STORY</h1>
 
-      <h4>
-        Hey. <br />
-        <br />
-        I'm a father and creative person with an unusually broad career spanning
-        publishing, technology and event management. <br />
-        <br />I believe that with knowledge comes the responsibility to teach
-        yourself whatever you're here to learn.
+      <p>
+        Hey!
         <br />
         <br />
-        I follow Stoic philosophy and escape to the quiet of open spaces.
+        My name is John Bartmann. I'm a South African technical-creative person
+        with an unusually broad career history. <br />
+        <br />I love learning and gravitate towards opportunities for
+        upskilling. I believe that knowledge acquisition comes bundled with the
+        responsibility to teach others. I aim to remain curious and passionate
+        in my choice of work.
         <br />
         <br />
-        My music has been heard by millions.
-        <br />
-        <br />I gravitate towards companies that provide opportunities for
-        upskilling. I hope to always remain curious, passionate and optimistic
-        in overcoming life's challenges.
+        I'm proud of my ability to solve problems for others, and of my music. I
+        follow Stoic philosophy and regularly escape to the quiet of open spaces
+        with my wife and son.
         <br />
         <br />
         Thanks for stopping by 🙂
         <br />
         <br />
         John
-      </h4>
-
-      <h3></h3>
+      </p>
 
       <br />
     </div>

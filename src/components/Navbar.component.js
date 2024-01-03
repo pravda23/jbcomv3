@@ -41,15 +41,14 @@ const Navbar = () => {
           <Link to="/work">
             <h1 className="btn-nav">WORK</h1>
           </Link>
+          <Link to="/music">
+            {" "}
+            <h1 className="btn-nav">MUSIC</h1>
+          </Link>
           {/* <Link to="/audio">
             {" "}
             <h1 className="btn-nav">AUDIO</h1>
           </Link>
-          <Link to="/music">
-            {" "}
-            <h1 className="btn-nav">MUSIC</h1>
-          </Link> */}
-
           {/* <Link to="/faq">
             {" "}
             <h1 className="btn-nav">FAQ</h1>
