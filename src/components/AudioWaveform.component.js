@@ -67,19 +67,23 @@ const AudioWaveform = ({ musicTracks }) => {
     wavesurfer.load(currentAudio);
     wavesurfer.once("ready", () => {
       wavesurfer.play();
+      console.log("ws once play");
     });
 
     wavesurfer.on("play", () => {
       setPlayingState("play");
       setIsPlaying(true);
+      console.log("ws on  play");
     });
     wavesurfer.on("pause", () => {
       setPlayingState("pause");
       setIsPlaying(false);
+      console.log("ws on pause");
     });
     wavesurfer.on("finish", () => {
       setPlayingState("finish");
       setIsPlaying(false);
+      console.log("ws on finish");
     });
 
     return () => {
@@ -96,6 +100,7 @@ const AudioWaveform = ({ musicTracks }) => {
       if (playingState === "play") {
         wavesurferObjRef.current.pause();
         setIsPlaying(true);
+        console.log(musicTrack.url_slug);
       } else {
         wavesurferObjRef.current.play();
         setIsPlaying(false);
@@ -116,12 +121,6 @@ const AudioWaveform = ({ musicTracks }) => {
       setIsPlaying(false);
     }
   };
-
-  // musicTracks.map((t) => {
-  //   if (t.key == "") {
-  //     console.log(t.key);
-  //   }
-  // });
 
   return (
     <div>
