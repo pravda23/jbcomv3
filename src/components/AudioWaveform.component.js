@@ -12,6 +12,12 @@ import {
 } from "react-icons/bs";
 
 import { AiOutlineYoutube } from "react-icons/ai";
+import { LuDice5 } from "react-icons/lu";
+import {
+  PiDiceFiveFill,
+  PiDiceFiveThin,
+  PiYoutubeLogoThin,
+} from "react-icons/pi";
 
 const AudioWaveform = ({ musicTracks }) => {
   const wavesurferRef = useRef(null);
@@ -25,6 +31,7 @@ const AudioWaveform = ({ musicTracks }) => {
   );
   const [playingState, setPlayingState] = useState("notStarted");
   const [isPlaying, setIsPlaying] = useState(false);
+  const [mouseOver, setMouseOver] = useState(false);
 
   useEffect(() => {
     if (currentAudio === undefined) {
@@ -127,14 +134,14 @@ const AudioWaveform = ({ musicTracks }) => {
             <img src={currentImage} />
             &nbsp;
             <div className="audio-list-title">{musicTrack.title}</div>
+            <a href={musicTrack.url_gum} target="_blank">
+              <BsDownload style={{ fontSize: 18, marginBottom: 3 }} />
+            </a>
+            &nbsp;
+            <a href={musicTrack.url_yt} target="_blank">
+              <PiYoutubeLogoThin />
+            </a>
           </div>
-          <a href={musicTrack.url_gum} target="_blank">
-            <BsDownload style={{ fontSize: 18, marginBottom: 3 }} />
-          </a>
-          &nbsp;
-          <a href={musicTrack.url_yt} target="_blank">
-            <AiOutlineYoutube />
-          </a>
         </div>
       ))}
       <div className="wavesurfer-container">
@@ -153,7 +160,7 @@ const AudioWaveform = ({ musicTracks }) => {
           <div ref={wavesurferRef}>{currentTitle}</div>
         </div>
         <div className="random-track-button">
-          <button onClick={() => selectRandom({ musicTracks })}>Click</button>
+          <PiDiceFiveFill onClick={() => selectRandom({ musicTracks })} />
         </div>
       </div>
     </div>
