@@ -121,7 +121,7 @@ const AudioWaveform = ({ musicTracks }) => {
   };
 
   return (
-    <div>
+    <>
       {musicTracks.map((musicTrack) => (
         <div
           className="audio-list-item-container no-overflow"
@@ -135,20 +135,20 @@ const AudioWaveform = ({ musicTracks }) => {
             &nbsp;
             <div className="audio-list-title">{musicTrack.title}</div>
             <a href={musicTrack.url_gum} target="_blank">
-              <BsDownload style={{ fontSize: 18, marginBottom: 3 }} />
+              <BsDownload style={{ fontSize: 20 }} />
             </a>
             &nbsp;
             <a href={musicTrack.url_yt} target="_blank">
-              <PiYoutubeLogoThin />
+              <PiYoutubeLogoThin style={{ fontSize: 30 }} />
             </a>
           </div>
-          <a href={musicTrack.url_gum} target="_blank">
+          {/* <a href={musicTrack.url_gum} target="_blank">
             <BsDownload style={{ fontSize: 18, marginBottom: 3 }} />
           </a>
           &nbsp;
           <a href={musicTrack.url_yt} target="_blank">
             <PiYoutubeLogoThin />
-          </a>
+          </a> */}
         </div>
       ))}
       <div className="wavesurfer-container">
@@ -160,11 +160,17 @@ const AudioWaveform = ({ musicTracks }) => {
               backgroundImage: `url(${currentImage})`,
             }}
           >
-            {!isPlaying ? <BsFillPlayFill /> : <BsFillPauseFill />}
+            {!isPlaying ? (
+              <BsFillPlayFill style={{ color: "black" }} />
+            ) : (
+              <BsFillPauseFill style={{ color: "black" }} />
+            )}
           </div>
         </div>
         <div className="wavesurfer-waveform">
-          <div ref={wavesurferRef}>{currentTitle}</div>
+          <div style={{ width: "100%" }} ref={wavesurferRef}>
+            {currentTitle}
+          </div>
         </div>
         <div className="random-track-button">
           <span onClick={() => selectRandom({ musicTracks })}>
@@ -172,7 +178,7 @@ const AudioWaveform = ({ musicTracks }) => {
           </span>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
