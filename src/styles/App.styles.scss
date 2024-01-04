@@ -26,8 +26,7 @@
   min-height: 100vh;
   background-color: hsla(220, 13%, 18%, 0.8);
   // delete below line to reset overlay opacity
-  background-color: hsla(220, 13%, 18%, 1);
-  z-index: 10;
+  // background-color: hsla(220, 13%, 18%, 1);
 }
 
 .link {
@@ -51,6 +50,11 @@
   color: var(--white);
   padding: 1rem 1rem 4rem 1rem;
   overflow: hidden;
+}
+
+p {
+  font-size: 1rem;
+  margin: 0;
 }
 
 h3 {
@@ -242,6 +246,10 @@ a:hover {
   // margin: 0 0 0.3rem 0;
 }
 
+.single-page-container > a {
+  color: var(--white);
+}
+
 .player-icon {
   display: flex;
   justify-content: flex-end;
@@ -295,8 +303,11 @@ a:hover {
   align-items: flex-start;
 }
 
-.card-button {
-  width: 20%;
+.random-track-button {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  top: 0;
 }
 
 /* audio list */
@@ -304,7 +315,7 @@ a:hover {
 .audio-list-container {
   animation-name: fadeIn;
   animation-duration: 300ms;
-  height: 60vh;
+  max-height: 55vh;
   border: 1px solid var(--color-light-trans);
   border-radius: 5px;
   padding: 0.2rem;
@@ -482,9 +493,54 @@ a:hover {
   color: var(--color-dark);
 }
 
-@media (min-width: 600px) {
-  .gallery-item-container {
-    grid-template-columns: repeat(3, 1fr);
+.wavesurfer-container {
+  position: fixed;
+  display: flex;
+  left: 0;
+  bottom: 0vh;
+  max-height: 15vh;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 3px;
+  border: 1px solid var(--color-light-trans);
+  overflow-x: auto;
+  overflow-y: hidden;
+  // display: none;
+}
+.wavesurfer-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wavesurfer-img-overlay {
+  font-family: "Bootstrap-icons";
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  color: white;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.wavesurfer-img-overlay:hover {
+  scale: 1.1;
+}
+
+.wavesurfer-waveform {
+  width: 100%;
+  padding-left: 0.5rem;
+}
+
+@media (min-width: 800px) {
+  .app-container {
+    margin-left: 25%;
+    width: 50%;
   }
 
   .audio-list-container {

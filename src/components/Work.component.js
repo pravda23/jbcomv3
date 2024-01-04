@@ -1,5 +1,3 @@
-import Card from "./Card.component";
-
 const Work = () => {
   const workList = [
     {
@@ -109,9 +107,22 @@ const Work = () => {
   return (
     <div className="single-page-container">
       <h1>WORK</h1>
-      <h3>A wide range of creative work for teams, brands and people.</h3>
+      <p className="center" style={{ margin: 30 }}>
+        A wide range of creative work for teams, brands and people.
+      </p>
       {workList.map((job) => {
-        return Card(job.title, job.description, job.link, job.id);
+        return (
+          <>
+            <a href={job.link} target="_blank">
+              <div className="card-container" key={job.id}>
+                <div className="card-title">
+                  <h3>{job.title}</h3>
+                  <p>{job.description}</p>
+                </div>
+              </div>
+            </a>
+          </>
+        );
       })}
 
       <br />

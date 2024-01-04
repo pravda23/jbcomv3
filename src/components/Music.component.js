@@ -1,19 +1,27 @@
-import React from "react";
-import ReactPlayer from "react-player";
-import "react-h5-audio-player/src/styles.scss";
-
-import MusicProfiles from "./MusicProfiles.component";
-import Card from "./Card.component";
+import { useState } from "react";
+import AudioWaveform from "./AudioWaveform.component.js";
+import musicTracks from "./musicTracks.json";
 
 const Music = () => {
+  const [currentFile, setCurrentFile] = useState();
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const clickHandle = (e) => {
+    setCurrentFile(e);
+    setIsPlaying(true);
+  };
+
   return (
-    <div className="single-page-container">
-      <h1>MUSIC</h1>
-      <h3>Follow the links to listen to music from my various profiles.</h3>
-      <MusicProfiles />
-      <br />
-      <h3>Interactive music player coming soon!</h3>
+    <div>
+      <h1 className="center">MUSIC</h1>
+      <p className="center" style={{ margin: 30 }}>
+        Creative Commons music tracks and templates for everyone.
+      </p>
+      <div className="audio-list-container">
+        <AudioWaveform musicTracks={musicTracks} clickHandle={clickHandle} />
+      </div>
     </div>
   );
 };
+
 export default Music;

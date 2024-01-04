@@ -11,13 +11,8 @@ import {
   BsYoutube,
 } from "react-icons/bs";
 
-import { AiOutlineYoutube } from "react-icons/ai";
-import { LuDice5 } from "react-icons/lu";
-import {
-  PiDiceFiveFill,
-  PiDiceFiveThin,
-  PiYoutubeLogoThin,
-} from "react-icons/pi";
+import { PiYoutubeLogoThin } from "react-icons/pi";
+import { PiDiceFiveFill } from "react-icons/pi";
 
 const AudioWaveform = ({ musicTracks }) => {
   const wavesurferRef = useRef(null);
@@ -55,19 +50,23 @@ const AudioWaveform = ({ musicTracks }) => {
     wavesurfer.load(currentAudio);
     wavesurfer.once("ready", () => {
       wavesurfer.play();
+      console.log("ws once play");
     });
 
     wavesurfer.on("play", () => {
       setPlayingState("play");
       setIsPlaying(true);
+      console.log("ws on  play");
     });
     wavesurfer.on("pause", () => {
       setPlayingState("pause");
       setIsPlaying(false);
+      console.log("ws on pause");
     });
     wavesurfer.on("finish", () => {
       setPlayingState("finish");
       setIsPlaying(false);
+      console.log("ws on finish");
     });
 
     return () => {
@@ -84,6 +83,7 @@ const AudioWaveform = ({ musicTracks }) => {
       if (playingState === "play") {
         wavesurferObjRef.current.pause();
         setIsPlaying(true);
+        console.log(musicTrack.url_slug);
       } else {
         wavesurferObjRef.current.play();
         setIsPlaying(false);
@@ -94,7 +94,7 @@ const AudioWaveform = ({ musicTracks }) => {
     setCurrentAudio(
       `https://johnbartmann.com/track/${musicTrack.url_slug}-sample.mp3`
     );
-    setCurrentImage("https://source.unsplash.com/collection/1163637/50x50");
+    setCurrentImage("https://source.unsplash.com/collection/1163637/35x35");
   };
 
   const handleAudioPlayPause = () => {
@@ -142,6 +142,13 @@ const AudioWaveform = ({ musicTracks }) => {
               <PiYoutubeLogoThin />
             </a>
           </div>
+          <a href={musicTrack.url_gum} target="_blank">
+            <BsDownload style={{ fontSize: 18, marginBottom: 3 }} />
+          </a>
+          &nbsp;
+          <a href={musicTrack.url_yt} target="_blank">
+            <PiYoutubeLogoThin />
+          </a>
         </div>
       ))}
       <div className="wavesurfer-container">
@@ -160,7 +167,9 @@ const AudioWaveform = ({ musicTracks }) => {
           <div ref={wavesurferRef}>{currentTitle}</div>
         </div>
         <div className="random-track-button">
-          <PiDiceFiveFill onClick={() => selectRandom({ musicTracks })} />
+          <span onClick={() => selectRandom({ musicTracks })}>
+            <PiDiceFiveFill style={{ fontSize: 60 }} />
+          </span>
         </div>
       </div>
     </div>
