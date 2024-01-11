@@ -41,8 +41,9 @@ const AudioWaveform = ({ musicTracks }) => {
       height: 100,
       responsive: true,
       height: 24,
-      barWidth: 4,
+      barWidth: 2,
       barRadius: 4,
+      barGap: 3,
     });
 
     wavesurferObjRef.current = wavesurfer;

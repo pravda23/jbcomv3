@@ -11,6 +11,27 @@ const Music = () => {
     setIsPlaying(true);
   };
 
+  const updateTracks = () => {
+    musicTracks.forEach((t) => {
+      // add album title and image
+
+      delete t.img_full;
+      delete t.img_thumb;
+
+      if (t.key <= 20) {
+        t.albumTitle = "public-domain-soundtrack-music";
+        t.img_full = `https:/johnbartmann.com/track-image/800/${t.albumTitle}.jpg`;
+      }
+
+      // t.img_full = `https:/johnbartmann.com/track-image/800/${t.url}.jpg`;
+      // t.img_thumb = `https:/johnbartmann.com/track-image/THUMB_PATH`;
+    });
+  };
+
+  updateTracks();
+  // console.log(musicTracks[334]);
+  console.log(musicTracks);
+
   return (
     <div>
       <h1 className="center">MUSIC</h1>
