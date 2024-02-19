@@ -117,7 +117,7 @@ a:hover {
 .content-container {
   background-image: url("https://johnbartmann.com/images/headshot-corporate.jpg");
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
@@ -284,6 +284,14 @@ a:hover {
   align-items: flex-start;
 }
 
+.card-title > h3 {
+  color: white;
+}
+
+.white {
+  color: var(--white);
+}
+
 .audio-list > div > div:hover {
   background-color: var(--color-dark-trans);
 }
@@ -410,4 +418,4 @@ a:hover {
   100% {
     opacity: 1;
   }
-}/*# sourceMappingURL=App.styles.css.map */
+} /*# sourceMappingURL=App.styles.css.map */
