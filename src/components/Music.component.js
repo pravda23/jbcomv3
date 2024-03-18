@@ -87,8 +87,9 @@ const Music = () => {
   return (
     <div>
       <h1 className="center">MUSIC</h1>
-      <p className="center" style={{ margin: 30 }}>
-        Creative Commons music tracks and templates for everyone.
+      <p style={{ margin: 30 }}>
+        Creative Commons music tracks and templates for everyone.{" "}
+        <a href="/faq">View the FAQ</a> for license and download info.
       </p>
       <div className="audio-list-container">
         <AudioWaveform musicTracks={musicTracks} clickHandle={clickHandle} />

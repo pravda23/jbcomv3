@@ -47,7 +47,7 @@ function App() {
               <Route path="/audio" element={<Audio />} />
               <Route path="/music" element={<Music />} />
               <Route path="/contact" element={<Contact />} />
-              {/* <Route path="/faq" element={<FAQ />} /> */}
+              <Route path="/faq" element={<FAQ />} />
             </Routes>
           </BrowserRouter>
         </div>

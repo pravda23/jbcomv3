@@ -102,9 +102,11 @@ const AudioWaveform = ({ musicTracks }) => {
     if (playingState === "play") {
       wavesurferObjRef.current.pause();
       setIsPlaying(true);
-    } else {
+    } else if (playingState !== "play") {
       wavesurferObjRef.current.play();
       setIsPlaying(false);
+    } else {
+      console.log("Error: Unknown state: " + playingState);
     }
   };
 
